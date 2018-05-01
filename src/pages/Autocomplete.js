@@ -6,10 +6,7 @@ import Paper from 'material-ui/Paper';
 import { MenuItem } from 'material-ui/Menu';
 import Downshift from 'downshift';
 
-const suggestions = [
-  { label: 'Pasta' },
-  { label: 'Cheese' }
-];
+import { suggestions } from './suggestions'
 
 function renderInput(inputProps) {
   const { InputProps, classes, ref, ...other } = inputProps;
