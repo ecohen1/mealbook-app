@@ -23,11 +23,12 @@ const styles = theme => ({
 
 class TimeAfter extends React.Component {
   state = {
-    age: ''
+    age: this.props.val
   };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    this.props.updateParent(event.target.value)
   };
 
   render() {

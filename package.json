@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "downshift": "^1.31.12",
+    "firebase": "^4.13.1",
     "material-ui": "next",
     "prop-types": "latest",
     "react": "latest",

@@ -76,7 +76,7 @@ function DishName(props) {
   const { classes } = props;
 
   return (
-    <Downshift>
+    <Downshift defaultInputValue={props.val} onChange={(val) => props.updateParent(val)}>
       {({ getInputProps, getItemProps, isOpen, inputValue, selectedItem, highlightedIndex }) => (
         <div className={classes.container}>
           {renderInput({

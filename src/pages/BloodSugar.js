@@ -23,11 +23,12 @@ const styles = theme => ({
 
 class BloodSugar extends React.Component {
   state = {
-    age: ''
+    age: this.props.val
   };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    this.props.updateParent(event.target.value)
   };
 
   render() {
@@ -36,7 +37,7 @@ class BloodSugar extends React.Component {
     return (
       <FormControl className={classes.formControl}>
         my blood sugar was
-        <InputLabel htmlFor="age-simple">Blood Sugar</InputLabel>
+        <InputLabel htmlFor="age-simple"></InputLabel>
         <Select
           value={this.state.age}
           onChange={this.handleChange}

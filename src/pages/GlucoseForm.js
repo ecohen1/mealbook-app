@@ -9,6 +9,7 @@ import Select from 'material-ui/Select';
 import TimeAfter from './TimeAfter'
 import DishName from './Autocomplete'
 import BloodSugar from './BloodSugar'
+import SubmitButton from './SubmitButton'
 
 const styles = theme => ({
   root: {
@@ -26,25 +27,40 @@ const styles = theme => ({
 
 
 class GlucoseForm extends React.Component {
-  state = {
-    age: '',
-    name: 'hai',
-  };
+  state = {...this.props.form};
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  // componentDidMount = () => {
+  //   this.setState(this.props.form, () => console.log(this.state))
+  // }
+
+  updateTimeAfter = (val) => {
+    this.setState({timeAfter: val}, this.updateState)
+  }
+
+  updateDishName = (val) => {
+    this.setState({dishName: val}, this.updateState)
+  }
+
+  updateBloodSugar = (val) => {
+    this.setState({bloodSugar: val}, this.updateState)
+  }
+
+  updateState = () => {
+    this.props.updateState(this.state, this.props.idx)
+  }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <form className={classes.root} autoComplete="off">
-        <TimeAfter />
+      <form className={classes.root} action="" autoComplete="off" onSubmit={this.saveForm}>
+        <TimeAfter val={this.state.timeAfter} updateParent={this.updateTimeAfter}/>
         <br></br>
-        <DishName />
         <br></br>
-        <BloodSugar />
+        <DishName val={this.state.dishName} updateParent={this.updateDishName}/>
+        <br></br>
+        <br></br>
+        <BloodSugar val={this.state.bloodSugar} updateParent={this.updateBloodSugar}/>
       </form>
     );
   }
