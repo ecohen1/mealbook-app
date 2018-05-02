@@ -5,6 +5,7 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
+import TextField from 'material-ui/TextField';
 
 const styles = theme => ({
   root: {
@@ -17,6 +18,18 @@ const styles = theme => ({
   },
   selectEmpty: {
     // marginTop: theme.spacing.unit * 2,
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  menu: {
+    width: 200,
   },
 });
 
@@ -37,19 +50,18 @@ class BloodSugar extends React.Component {
     return (
       <FormControl className={classes.formControl}>
         my blood sugar was
-        <InputLabel htmlFor="age-simple"></InputLabel>
-        <Select
+        <TextField
+          id="search"
+          label="blood sugar value"
+          className={classes.textField}
+          margin="normal"
           value={this.state.age}
           onChange={this.handleChange}
           inputProps={{
             name: 'age',
             id: 'age-simple',
           }}
-        >
-          <MenuItem value={10}>under 100</MenuItem>
-          <MenuItem value={20}>100 to 200</MenuItem>
-          <MenuItem value={30}>more than 200</MenuItem>
-        </Select>
+        />
       </FormControl>
     );
   }
