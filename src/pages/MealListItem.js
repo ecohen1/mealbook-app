@@ -16,8 +16,6 @@ import IconButton from 'material-ui/IconButton';
 // import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-let imgUrl = "https://www.inspiredtaste.net/wp-content/uploads/2011/12/How-to-Cook-Hard-Boiled-Eggs-2-1200.jpg"
-
 const styles = {
   root: {
     // backgroundColor: theme.palette.background.paper,
@@ -37,9 +35,9 @@ class MealListItem extends React.Component {
     const { recipe } = this.props;
 
     return (
-      <ListItem>
-        <img src={imgUrl} style={styles.recipeImage}/>
-        {recipe}
+      <ListItem button>
+        <img src={recipe.imgUrl} style={styles.recipeImage}/>
+        {recipe.name}
         <ListItemSecondaryAction>
           <IconButton aria-label="Delete">
             <DeleteIcon />
