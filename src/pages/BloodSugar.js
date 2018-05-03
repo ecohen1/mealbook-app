@@ -36,7 +36,7 @@ const styles = theme => ({
 
 class BloodSugar extends React.Component {
   state = {
-    age: this.props.val
+    bloodSugar: this.props.val
   };
 
   handleChange = event => {
@@ -55,11 +55,11 @@ class BloodSugar extends React.Component {
           label="blood sugar value"
           className={classes.textField}
           margin="normal"
-          value={this.state.age}
+          value={this.state.bloodSugar}
           onChange={this.handleChange}
           inputProps={{
-            name: 'age',
-            id: 'age-simple',
+            name: 'bloodSugar',
+            id: 'bloodSugar',
           }}
         />
       </FormControl>

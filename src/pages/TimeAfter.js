@@ -36,7 +36,7 @@ const styles = theme => ({
 
 class TimeAfter extends React.Component {
   state = {
-    age: this.props.val
+    timeAfter: this.props.val
   };
 
   handleChange = event => {
@@ -54,11 +54,11 @@ class TimeAfter extends React.Component {
           label="time (in minutes)"
           className={classes.textField}
           margin="normal"
-          value={this.state.age}
+          value={this.state.timeAfter}
           onChange={this.handleChange}
           inputProps={{
-            name: 'age',
-            id: 'age-simple',
+            name: 'timeAfter',
+            id: 'timeAfter',
           }}
         />
         minutes after i ate:
@@ -72,17 +72,3 @@ TimeAfter.propTypes = {
 };
 
 export default withStyles(styles)(TimeAfter);
-
-// <InputLabel htmlFor="age-simple">Time</InputLabel>
-// <Select
-//   value={this.state.age}
-//   onChange={this.handleChange}
-//   inputProps={{
-//     name: 'age',
-//     id: 'age-simple',
-//   }}
-// >
-//   <MenuItem value={10}>Ten</MenuItem>
-//   <MenuItem value={20}>Twenty</MenuItem>
-//   <MenuItem value={30}>Thirty</MenuItem>
-// </Select>
