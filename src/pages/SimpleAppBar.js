@@ -8,13 +8,15 @@ import Typography from 'material-ui/Typography';
 const styles = {
   root: {
     flexGrow: 1,
+    marginBottom: "5%"
   },
 };
 
 function SimpleAppBar(props) {
-  const { classes } = props;
+  // const { classes } = props;
+  
   return (
-    <div className={classes.root}>
+    <div className={styles.root}>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="title" color="inherit">
@@ -26,8 +28,4 @@ function SimpleAppBar(props) {
   );
 }
 
-SimpleAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SimpleAppBar);
+export default SimpleAppBar;
