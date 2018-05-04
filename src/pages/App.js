@@ -6,6 +6,7 @@ import Select from 'material-ui/Select';
 
 import SimpleAppBar from './SimpleAppBar'
 import FullWidthTabs from './FullWidthTabs'
+import PersonalizeButton from './PersonalizeButton'
 
 import * as firebase from "firebase";
 var config = {
@@ -26,6 +27,7 @@ class App extends React.Component {
   state = {
     meals: [
     ],
+    hasPersonalized: true,
     username: this.props.location.search.substring(1)
   };
 
@@ -42,9 +44,15 @@ class App extends React.Component {
   getUserData = (userId) => {
     var self = this
     return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
-      var meals = snapshot.val() ? snapshot.val().meals : [];
-      self.setState({meals})
-      console.log(self.state)
+      if (snapshot.val()) {
+        let userData = snapshot.val();
+        //get meals for user
+        var meals = userData.meals;
+        //see whether user has filled out personalization form
+        var hasPersonalized = userData.hasPersonalized;
+        //set new state
+        self.setState({meals, hasPersonalized})
+      }
     });
   }
 
@@ -56,6 +64,7 @@ class App extends React.Component {
     return (
       <div style={styles.root}>
         <SimpleAppBar/>
+        {this.state.hasPersonalized ? '' : <PersonalizeButton />}
         <FullWidthTabs meals={this.state.meals}/>
       </div>
     )

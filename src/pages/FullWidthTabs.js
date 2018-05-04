@@ -13,7 +13,8 @@ import MealList from './MealList';
 const styles = {
   root: {
     // backgroundColor: theme.palette.background.paper,
-    width: "100%"
+    width: "80%",
+    margin: "auto"
   },
 };
 
@@ -35,7 +36,7 @@ class FullWidthTabs extends React.Component {
     const mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks"]
 
     return (
-      <div className={styles.root}>
+      <div style={styles.root}>
         <AppBar position="static" color="default">
           <Tabs
             value={this.state.value}

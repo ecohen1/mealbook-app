@@ -14,6 +14,7 @@ const styles = {
   root: {
     // backgroundColor: theme.palette.background.paper,
     width: "100%",
+    margin: "auto"
   },
 };
 
@@ -25,7 +26,7 @@ class MealList extends React.Component {
     const { classes, recipes } = this.props;
 
     return (
-      <List>
+      <List style={styles.root}>
         {
           recipes.map((recipe, idx) => {
             return (

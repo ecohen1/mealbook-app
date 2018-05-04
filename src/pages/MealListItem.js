@@ -14,16 +14,30 @@ import Divider from 'material-ui/Divider';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 // import FolderIcon from '@material-ui/icons/Folder';
-import DeleteIcon from '@material-ui/icons/Delete';
+import BloodSugarLogIcon from '@material-ui/icons/Timeline';
+import NutritionFactsIcon from '@material-ui/icons/Assignment';
 
 const styles = {
   root: {
     // backgroundColor: theme.palette.background.paper,
     width: "100%",
+    margin: "auto"
   },
   recipeImage: {
-    height: "10%",
-    width: "10%"
+    height: "15%",
+    width: "15%",
+    marginRight: "5%",
+  },
+  recipeTitle: {
+    fontSize: "2em",
+    marginBottom: "15%"
+  },
+  recipeInfo: {
+    fontSize: "1.5em",
+    color: 'gray'
+  },
+  recipeIcons: {
+    fontSize: '2em'
   }
 };
 
@@ -31,18 +45,35 @@ class MealListItem extends React.Component {
   state = {
   };
 
+  redirectToRecipe = () => {
+    const { recipe } = this.props;
+    var win = window.open(recipe.url, '_blank');
+    win.focus();
+  }
+
   render() {
     const { recipe } = this.props;
 
     return (
-      <ListItem button>
+      <ListItem style={styles.root} button onClick={this.redirectToRecipe}>
         <img src={recipe.imgUrl} style={styles.recipeImage}/>
-        {recipe.name}
+
+        <div>
+          <div style={styles.recipeTitle}>{recipe.name}</div>
+          <div style={styles.recipeInfo}>
+            {recipe.cal} cal &nbsp;&nbsp;&nbsp; {recipe.prepTime} minutes
+          </div>
+        </div>
+
         <ListItemSecondaryAction>
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
+          <IconButton aria-label="Log Blood Sugar">
+            <BloodSugarLogIcon style={styles.recipeIcons} onClick={()=>{}}/>
+          </IconButton>
+          <IconButton aria-label="See Nutrition Facts" onClick={()=>{}}>
+            <NutritionFactsIcon style={styles.recipeIcons} />
           </IconButton>
         </ListItemSecondaryAction>
+
       </ListItem>
     );
   }

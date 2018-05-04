@@ -10,18 +10,21 @@ const styles = {
     flexGrow: 1,
     marginBottom: "5%"
   },
+  logo: {
+    width: "20%",
+    marginTop: "0.5%",
+    marginBottom: "0.5%"
+  }
 };
 
 function SimpleAppBar(props) {
   // const { classes } = props;
-  
+
   return (
-    <div className={styles.root}>
+    <div style={styles.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <Typography variant="title" color="inherit">
-            MealBook
-          </Typography>
+          <img src="mealbook-logo-small.png" style={styles.logo}/>
         </Toolbar>
       </AppBar>
     </div>
@@ -29,3 +32,7 @@ function SimpleAppBar(props) {
 }
 
 export default SimpleAppBar;
+
+// <Typography variant="title" color="inherit">
+//   MealBook
+// </Typography>
