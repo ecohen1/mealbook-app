@@ -9,13 +9,6 @@ import FullWidthTabs from './FullWidthTabs'
 import PersonalizeButton from './PersonalizeButton'
 
 import * as firebase from "firebase";
-var config = {
-  // apiKey: "<API_KEY>",
-  authDomain: "mealbook-app.firebaseapp.com",
-  databaseURL: "https://mealbook-app.firebaseio.com/",
-  // storageBucket: "<BUCKET>.appspot.com",
-};
-firebase.initializeApp(config);
 
 const styles = {
   root: {
@@ -52,6 +45,8 @@ class App extends React.Component {
         var hasPersonalized = userData.hasPersonalized;
         //set new state
         self.setState({meals, hasPersonalized})
+      } else {
+        self.setState({hasPersonalized: false})
       }
     });
   }

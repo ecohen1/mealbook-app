@@ -33,7 +33,15 @@ class FullWidthTabs extends React.Component {
 
   render() {
     const { meals } = this.props;
-    const mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks"]
+
+    var mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"]
+
+    var mealsByType = {
+      "Breakfast": meals.filter((meal) => meal.type == "Breakfast"),
+      "Lunch": meals.filter((meal) => meal.type == "Lunch"),
+      "Dinner": meals.filter((meal) => meal.type == "Dinner"),
+      "Snack": meals.filter((meal) => meal.type == "Snack"),
+    }
 
     return (
       <div style={styles.root}>
@@ -47,9 +55,9 @@ class FullWidthTabs extends React.Component {
             centered
           >
             {
-              meals.map((meal, idx) => {
+              mealTypes.map((mealType, idx) => {
                 return (
-                  <Tab key={"mealTab"+idx} label={mealNames[idx]} />
+                  <Tab key={"mealTab"+idx} label={mealType} />
                 )
               })
             }
@@ -61,11 +69,11 @@ class FullWidthTabs extends React.Component {
           onChangeIndex={this.handleChangeIndex}
         >
           {
-            meals.map((mealRecipes, idx) => {
+            mealTypes.map((mealType, idx) => {
               return (
                 <MealList
                   key={"mealList"+idx}
-                  recipes={mealRecipes}
+                  recipes={mealsByType[mealType]}
                 />
               )
             })
