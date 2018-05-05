@@ -12,10 +12,12 @@ import MealList from './MealList';
 
 const styles = {
   root: {
-    // backgroundColor: theme.palette.background.paper,
     width: "80%",
-    margin: "auto"
+    margin: "auto",
   },
+  tabBar: {
+    backgroundColor: "white",
+  }
 };
 
 class FullWidthTabs extends React.Component {
@@ -45,7 +47,7 @@ class FullWidthTabs extends React.Component {
 
     return (
       <div style={styles.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="default" style={styles.tabBar}>
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}

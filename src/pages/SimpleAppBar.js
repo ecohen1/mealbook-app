@@ -14,6 +14,9 @@ const styles = {
     width: "20%",
     marginTop: "0.5%",
     marginBottom: "0.5%"
+  },
+  appBar: {
+    backgroundColor: "white"
   }
 };
 
@@ -22,7 +25,7 @@ function SimpleAppBar(props) {
 
   return (
     <div style={styles.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default" style={styles.appBar}>
         <Toolbar>
           <img src="mealbook-logo-small.png" style={styles.logo}/>
         </Toolbar>

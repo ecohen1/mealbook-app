@@ -12,7 +12,7 @@ import * as firebase from "firebase";
 
 const styles = {
   root: {
-    width: "100%"
+    width: "100%",
   }
 };
 

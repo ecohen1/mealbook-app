@@ -6,12 +6,15 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 
+import * as firebase from "firebase";
+
 import { TypeField,
   NameField,
   UrlField,
   ImgUrlField,
   CalField,
-  PrepTimeField } from './MealFormFields'
+  PrepTimeField,
+  NutritionFactsUrlField } from './MealFormFields'
 
 const styles = {
   root: {
@@ -33,9 +36,41 @@ class MealForm extends React.Component {
     this.props.updateState(this.state, this.props.idx)
   }
 
-  render() {
-    // const { classes } = this.props;
+  // guid = () => {
+  //   function s4() {
+  //     return Math.floor((1 + Math.random()) * 0x10000)
+  //       .toString(16)
+  //       .substring(1);
+  //   }
+  //   // return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  //   return s4();
+  // }
 
+  // handleFileUpload = (e) => {
+  //   e.preventDefault();
+  //
+  //   let reader = new FileReader();
+  //   let file = e.target.files[0];
+  //
+  //   reader.onloadend = () => {
+  //     let filename = 'nutrition facts for ' + this.state.name + '-' + this.guid() + '.jpg';
+  //     this.uploadImageToFirebase(file, filename)
+  //   }
+  //
+  //   reader.readAsDataURL(file)
+  // }
+  //
+  // uploadImageToFirebase = (file, filename) => {
+  //   var self = this;
+  //   var storageRef = firebase.storage().ref();
+  //   var ref = storageRef.child(filename);
+  //
+  //   ref.put(file).then(function(snapshot) {
+  //     self.setState({nutritionFactsUrl: snapshot.downloadURL})
+  //   });
+  // }
+
+  render() {
     return (
       <form style={styles.root} action="" autoComplete="off" onSubmit={this.saveForm}>
         <TypeField val={this.state.type} updateParent={(val) => this.updateField('type', val)}/>
@@ -44,6 +79,7 @@ class MealForm extends React.Component {
         <ImgUrlField val={this.state.imgUrl} updateParent={(val) => this.updateField('imgUrl', val)}/>
         <CalField val={this.state.cal} updateParent={(val) => this.updateField('cal', val)}/>
         <PrepTimeField val={this.state.prepTime} updateParent={(val) => this.updateField('prepTime', val)}/>
+        <NutritionFactsUrlField val={this.state.nutritionFactsUrl} updateParent={(val) => this.updateField('nutritionFactsUrl', val)}/>
       </form>
     );
   }

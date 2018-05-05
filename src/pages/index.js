@@ -8,7 +8,7 @@ var config = {
   // apiKey: "<API_KEY>",
   authDomain: "mealbook-app.firebaseapp.com",
   databaseURL: "https://mealbook-app.firebaseio.com/",
-  // storageBucket: "<BUCKET>.appspot.com",
+  storageBucket: "mealbook-app.appspot.com",
 };
 firebase.initializeApp(config);
 

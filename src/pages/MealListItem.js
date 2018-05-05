@@ -17,6 +17,8 @@ import IconButton from 'material-ui/IconButton';
 import BloodSugarLogIcon from '@material-ui/icons/Timeline';
 import NutritionFactsIcon from '@material-ui/icons/Assignment';
 
+import NutritionFactsModal from './NutritionFactsModal';
+
 const styles = {
   root: {
     // backgroundColor: theme.palette.background.paper,
@@ -43,12 +45,26 @@ const styles = {
 
 class MealListItem extends React.Component {
   state = {
+    showNutritionFacts: false,
+    showBloodSugar: false
   };
 
   redirectToRecipe = () => {
-    const { recipe } = this.props;
-    var win = window.open(recipe.url, '_blank');
-    win.focus();
+    // const { recipe } = this.props;
+    // var win = window.open(recipe.url, '_blank');
+    // win.focus();
+  }
+
+  toggleBloodSugar = () => {
+
+  }
+
+  openNutritionFacts = () => {
+    this.setState({showNutritionFacts: true})
+  }
+
+  closeNutritionFacts = () => {
+    this.setState({showNutritionFacts: false})
   }
 
   render() {
@@ -67,12 +83,14 @@ class MealListItem extends React.Component {
 
         <ListItemSecondaryAction>
           <IconButton aria-label="Log Blood Sugar">
-            <BloodSugarLogIcon style={styles.recipeIcons} onClick={()=>{}}/>
+            <BloodSugarLogIcon style={styles.recipeIcons} onClick={this.toggleBloodSugar}/>
           </IconButton>
-          <IconButton aria-label="See Nutrition Facts" onClick={()=>{}}>
+          <IconButton aria-label="See Nutrition Facts" onClick={this.openNutritionFacts}>
             <NutritionFactsIcon style={styles.recipeIcons} />
           </IconButton>
         </ListItemSecondaryAction>
+
+        <NutritionFactsModal nutritionFactsUrl={recipe.nutritionFactsUrl} isOpen={this.state.showNutritionFacts} closeNutritionFacts={this.closeNutritionFacts}/>
 
       </ListItem>
     );

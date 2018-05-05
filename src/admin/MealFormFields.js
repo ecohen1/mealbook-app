@@ -31,7 +31,6 @@ export class TypeField extends React.Component {
 
   render() {
     // const { classes } = this.props;
-    console.log(this.state.val)
 
     return (
       <FormControl style={styles.formField}>
@@ -193,6 +192,36 @@ export class PrepTimeField extends React.Component {
           inputProps={{
             name: 'prepTime',
             id: 'prepTime',
+          }}
+        />
+      </FormControl>
+    );
+  }
+}
+
+export class NutritionFactsUrlField extends React.Component {
+  state = {
+    val: this.props.val
+  };
+
+  handleChange = event => {
+    this.setState({ val: event.target.value });
+    this.props.updateParent(event.target.value)
+  };
+
+  render() {
+    // const { classes } = this.props;
+
+    return (
+      <FormControl style={styles.formField}>
+        <TextField
+          id="nutritionFactsUrl"
+          label="nutrition facts image url"
+          value={this.state.val}
+          onChange={this.handleChange}
+          inputProps={{
+            name: 'nutritionFactsUrl',
+            id: 'nutritionFactsUrl',
           }}
         />
       </FormControl>

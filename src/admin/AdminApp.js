@@ -31,7 +31,8 @@ class App extends React.Component {
       url: '',
       imgUrl: '',
       cal: '',
-      prepTime: ''
+      prepTime: '',
+      nutritionFactsUrl: ''
     }
     // meals.splice(0,0,emptyForm)
     meals.push(emptyForm)
