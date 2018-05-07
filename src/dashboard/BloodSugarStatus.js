@@ -64,7 +64,7 @@ class StatusList extends React.Component {
 
         <ListItemSecondaryAction>
           <IconButton aria-label="Log Blood Sugar">
-            See More
+            See Your Numbers
           </IconButton>
         </ListItemSecondaryAction>
 

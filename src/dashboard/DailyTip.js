@@ -64,7 +64,7 @@ class DailyTip extends React.Component {
 
         <ListItemSecondaryAction>
           <IconButton aria-label="Log Blood Sugar">
-            See More
+            Learn More
           </IconButton>
         </ListItemSecondaryAction>
 

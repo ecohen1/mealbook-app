@@ -23,13 +23,7 @@ class RecipeInfoApp extends React.Component {
   componentDidMount = () => {
     this.getUserData(this.state.username)
   }
-
-  writeUserData = (userId, forms) => {
-    firebase.database().ref('users/' + userId).set({
-      forms: forms
-    });
-  }
-
+  
   getUserData = (userId) => {
     var self = this
     return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {

@@ -12,6 +12,8 @@ import WelcomeTitle from './WelcomeTitle'
 import StatusList from './StatusList'
 import RecipeList from './RecipeList'
 
+import { Graph } from 'react-d3-graph';
+
 const styles = {
   root: {
     width: "100%",
@@ -28,13 +30,8 @@ class DashboardApp extends React.Component {
 
   componentDidMount = () => {
     this.getUserData(this.state.username)
+    console.log(Graph)
   }
-
-  // writeUserData = (userId, forms) => {
-  //   firebase.database().ref('users/' + userId).set({
-  //     forms: forms
-  //   });
-  // }
 
   getUserData = (userId) => {
     var self = this
@@ -51,10 +48,6 @@ class DashboardApp extends React.Component {
         self.setState({hasPersonalized: false})
       }
     });
-  }
-
-  updateDB = () => {
-    this.writeUserData(this.state.username, this.state.forms)
   }
 
   render() {

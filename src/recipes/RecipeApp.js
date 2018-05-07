@@ -51,10 +51,6 @@ class RecipeApp extends React.Component {
     });
   }
 
-  // updateDB = () => {
-  //   this.writeUserData(this.state.username, this.state.forms)
-  // }
-
   render() {
     return (
       <div style={styles.root}>
