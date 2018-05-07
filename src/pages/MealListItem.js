@@ -18,6 +18,7 @@ import BloodSugarLogIcon from '@material-ui/icons/Timeline';
 import NutritionFactsIcon from '@material-ui/icons/Assignment';
 
 import NutritionFactsModal from './NutritionFactsModal';
+import LogBloodSugarModal from './LogBloodSugarModal';
 
 const styles = {
   root: {
@@ -38,6 +39,10 @@ const styles = {
     fontSize: "1.5em",
     color: 'gray'
   },
+  moreInfo: {
+    fontSize: "1.5em",
+    color: 'gray'
+  },
   recipeIcons: {
     fontSize: '2em'
   }
@@ -45,26 +50,42 @@ const styles = {
 
 class MealListItem extends React.Component {
   state = {
-    showNutritionFacts: false,
-    showBloodSugar: false
+    showNutritionFactsModal: false,
+    showLogBloodSugarModal: false
   };
 
-  redirectToRecipe = () => {
+  redirectToRecipe = (e) => {
     // const { recipe } = this.props;
-    // var win = window.open(recipe.url, '_blank');
+    // var redirectUrl = '/recipe?' + escape(recipe.name)
+    // var win = window.open(redirectUrl, '_blank');
     // win.focus();
+    const { recipe } = this.props;
+    var win = window.open(recipe.url, '_blank');
+    win.focus();
   }
 
   toggleBloodSugar = () => {
 
   }
 
-  openNutritionFacts = () => {
-    this.setState({showNutritionFacts: true})
+  openNutritionFactsModal = (e) => {
+    e.stopPropagation()
+    this.setState({showNutritionFactsModal: true})
   }
 
-  closeNutritionFacts = () => {
-    this.setState({showNutritionFacts: false})
+  closeNutritionFactsModal = (e) => {
+    e.stopPropagation()
+    this.setState({showNutritionFactsModal: false})
+  }
+
+  openLogBloodSugarModal = (e) => {
+    e.stopPropagation()
+    this.setState({showLogBloodSugarModal: true})
+  }
+
+  closeLogBloodSugarModal = (e) => {
+    e.stopPropagation()
+    this.setState({showLogBloodSugarModal: false})
   }
 
   render() {
@@ -83,14 +104,15 @@ class MealListItem extends React.Component {
 
         <ListItemSecondaryAction>
           <IconButton aria-label="Log Blood Sugar">
-            <BloodSugarLogIcon style={styles.recipeIcons} onClick={this.toggleBloodSugar}/>
+            <BloodSugarLogIcon style={styles.recipeIcons} onClick={this.openLogBloodSugarModal}/>
           </IconButton>
-          <IconButton aria-label="See Nutrition Facts" onClick={this.openNutritionFacts}>
+          <IconButton aria-label="See Nutrition Facts" onClick={this.openNutritionFactsModal}>
             <NutritionFactsIcon style={styles.recipeIcons} />
           </IconButton>
         </ListItemSecondaryAction>
 
-        <NutritionFactsModal nutritionFactsUrl={recipe.nutritionFactsUrl} isOpen={this.state.showNutritionFacts} closeNutritionFacts={this.closeNutritionFacts}/>
+        <NutritionFactsModal nutritionFactsUrl={recipe.nutritionFactsUrl} isOpen={this.state.showNutritionFactsModal} closeModal={this.closeNutritionFactsModal}/>
+        <LogBloodSugarModal isOpen={this.state.showLogBloodSugarModal} closeModal={this.closeLogBloodSugarModal}/>
 
       </ListItem>
     );

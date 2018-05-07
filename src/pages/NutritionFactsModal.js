@@ -16,7 +16,7 @@ class NutritionFactsModal extends React.Component {
 
   render() {
     return (
-      <Dialog aria-labelledby="simple-dialog-title" open={this.props.isOpen} onBackdropClick={this.props.closeNutritionFacts}>
+      <Dialog aria-labelledby="simple-dialog-title" open={this.props.isOpen} onBackdropClick={this.props.closeModal} onClick={e=>e.stopPropagation()}>
         <img src={this.props.nutritionFactsUrl} />
       </Dialog>
     );

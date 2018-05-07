@@ -34,7 +34,7 @@ export class TypeField extends React.Component {
 
     return (
       <FormControl style={styles.formField}>
-        <TextField
+        <Select
           id="type"
           label="meal type"
           value={this.state.val}
@@ -43,7 +43,12 @@ export class TypeField extends React.Component {
             name: 'type',
             id: 'type',
           }}
-        />
+        >
+          <MenuItem value={"Breakfast"}>Breakfast</MenuItem>
+          <MenuItem value={"Lunch"}>Lunch</MenuItem>
+          <MenuItem value={"Dinner"}>Dinner</MenuItem>
+          <MenuItem value={"Snack"}>Snack</MenuItem>
+        </Select>
       </FormControl>
     );
   }

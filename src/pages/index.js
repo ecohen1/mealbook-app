@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
 import AdminApp from '../admin/AdminApp';
+import RecipePage from './RecipePage';
 
 import * as firebase from "firebase";
 var config = {
@@ -18,6 +19,7 @@ const Root = () => {
       <Switch>
         <Route path="/" component={App} exact />
         <Route path="/admin" component={AdminApp} exact />
+        <Route path="/recipe" component={RecipePage} exact />
       </Switch>
     </Router>
   );
