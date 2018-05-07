@@ -5,12 +5,19 @@ import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import TextField from 'material-ui/TextField';
 
-import PaperSheet from './PaperSheet'
-import SimpleAppBar from '../pages/SimpleAppBar'
+import PaperSheet from '../common/PaperSheet'
+import SimpleAppBar from '../common/SimpleAppBar'
 import MealForm from './MealForm'
 import AddButton from './AddButton'
 
 import * as firebase from "firebase";
+
+const styles = {
+  paper: {
+    // marginLeft: "2%",
+    // marginRight: "2%",
+  }
+}
 
 class App extends React.Component {
   state = {
@@ -72,23 +79,23 @@ class App extends React.Component {
     return (
       <div>
         <SimpleAppBar />
-          {
-            this.state.meals.map((meal, idx) => {
-              return (
-                <PaperSheet key={'Paper'+idx} >
-                  <MealForm meal={meal} idx={idx} updateState={self.updateState}/>
-                </PaperSheet>
-              );
-            })
-          }
-          <br></br>
-          <br></br>
-          {this.state.meals.length > 0 ?
-            'all changes are automatically saved' : ''
-          }
-          <br></br>
-          <br></br>
-          <AddButton onClick={this.addForm}/>
+        {
+          this.state.meals.map((meal, idx) => {
+            return (
+              <PaperSheet key={'Paper'+idx}>
+                <MealForm meal={meal} idx={idx} updateState={self.updateState} />
+              </PaperSheet>
+            );
+          })
+        }
+        <br></br>
+        <br></br>
+        {this.state.meals.length > 0 ?
+          'all changes are automatically saved' : ''
+        }
+        <br></br>
+        <br></br>
+        <AddButton onClick={this.addForm}/>
       </div>
     )
   }

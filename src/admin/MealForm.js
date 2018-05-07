@@ -18,9 +18,9 @@ import { TypeField,
 
 const styles = {
   root: {
-    // display: 'flex',
-    // flexWrap: 'wrap',
-  },
+    marginLeft: "2%",
+    marginRight: "2%"
+  }
 }
 
 class MealForm extends React.Component {

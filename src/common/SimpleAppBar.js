@@ -21,7 +21,6 @@ const styles = {
 };
 
 function SimpleAppBar(props) {
-  // const { classes } = props;
 
   return (
     <div style={styles.root}>
@@ -35,7 +34,3 @@ function SimpleAppBar(props) {
 }
 
 export default SimpleAppBar;
-
-// <Typography variant="title" color="inherit">
-//   MealBook
-// </Typography>

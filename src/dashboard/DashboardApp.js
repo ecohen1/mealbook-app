@@ -4,11 +4,13 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 
-// import SimpleAppBar from './SimpleAppBar'
-// import FullWidthTabs from './FullWidthTabs'
-// import PersonalizeButton from './PersonalizeButton'
-
 import * as firebase from "firebase";
+
+import SimpleAppBar from '../common/SimpleAppBar'
+import PersonalizeButton from '../common/PersonalizeButton'
+import WelcomeTitle from './WelcomeTitle'
+import StatusList from './StatusList'
+import RecipeList from './RecipeList'
 
 const styles = {
   root: {
@@ -16,23 +18,23 @@ const styles = {
   }
 };
 
-class App extends React.Component {
+class DashboardApp extends React.Component {
   state = {
     meals: [
     ],
     hasPersonalized: true,
-    recipeName: unescape(this.props.location.search.substring(1))
+    username: this.props.location.search.substring(1)
   };
 
   componentDidMount = () => {
     this.getUserData(this.state.username)
   }
 
-  writeUserData = (userId, forms) => {
-    firebase.database().ref('users/' + userId).set({
-      forms: forms
-    });
-  }
+  // writeUserData = (userId, forms) => {
+  //   firebase.database().ref('users/' + userId).set({
+  //     forms: forms
+  //   });
+  // }
 
   getUserData = (userId) => {
     var self = this
@@ -58,12 +60,13 @@ class App extends React.Component {
   render() {
     return (
       <div style={styles.root}>
+        <SimpleAppBar/>
+        {this.state.hasPersonalized ? <WelcomeTitle /> : <PersonalizeButton />}
+        <StatusList />
+        <RecipeList />
       </div>
     )
   }
 }
 
-export default App;
-// <SimpleAppBar/>
-// {this.state.hasPersonalized ? '' : <PersonalizeButton />}
-// <FullWidthTabs meals={this.state.meals}/>
+export default DashboardApp;

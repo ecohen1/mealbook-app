@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import App from './App';
+import RecipeApp from '../recipes/RecipeApp';
 import AdminApp from '../admin/AdminApp';
-import RecipePage from './RecipePage';
+import RecipeInfoApp from '../recipeInfo/RecipeInfoApp';
+import DashboardApp from '../dashboard/DashboardApp'
 
 import * as firebase from "firebase";
 var config = {
@@ -17,9 +18,10 @@ const Root = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={App} exact />
+        <Route path="/" component={DashboardApp} exact />
+        <Route path="/recipes" component={RecipeApp} exact />
         <Route path="/admin" component={AdminApp} exact />
-        <Route path="/recipe" component={RecipePage} exact />
+        <Route path="/recipe-info" component={RecipeInfoApp} exact />
       </Switch>
     </Router>
   );

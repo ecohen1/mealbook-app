@@ -112,11 +112,10 @@ class MealListItem extends React.Component {
         </ListItemSecondaryAction>
 
         <NutritionFactsModal nutritionFactsUrl={recipe.nutritionFactsUrl} isOpen={this.state.showNutritionFactsModal} closeModal={this.closeNutritionFactsModal}/>
-        <LogBloodSugarModal isOpen={this.state.showLogBloodSugarModal} closeModal={this.closeLogBloodSugarModal}/>
 
       </ListItem>
     );
   }
 }
-
+// <LogBloodSugarModal isOpen={this.state.showLogBloodSugarModal} closeModal={this.closeLogBloodSugarModal}/>
 export default MealListItem;

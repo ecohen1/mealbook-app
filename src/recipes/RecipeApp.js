@@ -4,9 +4,9 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 
-import SimpleAppBar from './SimpleAppBar'
+import SimpleAppBar from '../common/SimpleAppBar'
 import FullWidthTabs from './FullWidthTabs'
-import PersonalizeButton from './PersonalizeButton'
+import PersonalizeButton from '../common/PersonalizeButton'
 
 import * as firebase from "firebase";
 
@@ -16,7 +16,7 @@ const styles = {
   }
 };
 
-class App extends React.Component {
+class RecipeApp extends React.Component {
   state = {
     meals: [
     ],
@@ -66,4 +66,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default RecipeApp;
