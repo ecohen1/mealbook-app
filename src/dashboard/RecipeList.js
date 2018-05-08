@@ -40,15 +40,12 @@ const styles = {
     marginRight: "10px",
     borderStyle: 'solid',
     borderWidth: '2px',
-    padding: '0'
+    padding: '0px !important'
   },
   titleBar: {
     fontSize: '20px',
     background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
-  paperGridList: {
-    marginBottom: '10%'
-  }
 };
 
 class RecipeList extends React.Component {

@@ -52,16 +52,15 @@ class DailyTip extends React.Component {
         <img src={imgUrl} style={styles.recipeImage}/>
         <div style={styles.recipeTitle}>
           <Typography variant="title" color="inherit" style={styles.hello}>
-            Weekly Goal
+            Daily Tip
           </Typography>
           <Typography variant="display1" color="inherit" style={styles.hello}>
-            Lose 1 pound this week and get a bonus video from your nutritionist!
+            Fiber and protein help keep blood sugar steady and reduce the risk of future complications!
           </Typography>
         </div>
       </ListItem>
     );
   }
 }
-// Try keeping your average blood sugar below 130 mg/dL at least once this week!
 
 export default DailyTip;
