@@ -15,9 +15,12 @@ const styles = {
 };
 
 function PaperSheet(props) {
+
+  let combinedStyles = {...styles.root, ...props.moreStyles}
+
   return (
     <div>
-      <Paper style={styles.root} elevation={4}>
+      <Paper style={combinedStyles} elevation={props.noElevation ? 0 : 4}>
         {props.children}
       </Paper>
     </div>

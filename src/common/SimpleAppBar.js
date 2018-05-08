@@ -20,7 +20,8 @@ const styles = {
     width: "16%",
     // height: "80%",
     marginTop: "0.5%",
-    marginBottom: "0.5%"
+    marginBottom: "0.5%",
+    cursor: 'pointer'
   },
   appBar: {
     backgroundColor: "white"
@@ -51,7 +52,7 @@ class SimpleAppBar extends React.Component {
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>
           <Toolbar>
-            <img src="mealbook-logo-small.png" style={styles.logo}/>
+            <img src="mealbook-logo-small.png" style={styles.logo} onClick={() => window.location.href='/'}/>
 
             <Typography variant="title" color="inherit" style={styles.hello}>
               Welcome, Eli!

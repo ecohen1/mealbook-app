@@ -12,7 +12,7 @@ const styles = {
     // display: 'flex',
     // flexWrap: 'wrap',
     // justifyContent: 'space-around',
-    marginTop: '5%'
+    marginTop: '2%'
   },
   recipeTitle: {
     marginBottom: '3%',
@@ -30,9 +30,17 @@ const styles = {
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
   },
+  paperSheet: {
+    background: 'rgba(0,0,0,0)'
+  },
   gridListTile: {
     height: "500px",
-    cursor: 'pointer'
+    cursor: 'pointer',
+    marginLeft: "10px",
+    marginRight: "10px",
+    borderStyle: 'solid',
+    borderWidth: '2px',
+    padding: '0'
   },
   titleBar: {
     fontSize: '20px',
@@ -64,7 +72,7 @@ class RecipeList extends React.Component {
         </Typography>
 
         <br></br>
-        <PaperSheet>
+        <PaperSheet moreStyles={styles.paperSheet} noElevation>
           <GridList style={styles.gridList} cols={1.5} onClick={this.goToRecipeInfo}>
             {recipes.map((recipe,idx) => (
               <GridListTile key={"tile" + idx} style={styles.gridListTile}>
