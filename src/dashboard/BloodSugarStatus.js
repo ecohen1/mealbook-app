@@ -30,19 +30,7 @@ const styles = {
   },
   recipeTitle: {
     fontSize: "2em",
-    marginBottom: "15%"
   },
-  recipeInfo: {
-    fontSize: "1.5em",
-    color: 'gray'
-  },
-  moreInfo: {
-    fontSize: "1.5em",
-    color: 'gray'
-  },
-  recipeIcons: {
-    fontSize: '2em'
-  }
 };
 
 const imgUrl = "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/uh59Wh0/graph-icon-cartoon-illustration-hand-drawn-animation-transparent_4jnqw3uq__F0004.png"
@@ -57,17 +45,7 @@ class StatusList extends React.Component {
     return (
       <ListItem style={styles.root} button onClick={() => {}}>
         <img src={imgUrl} style={styles.recipeImage}/>
-
-        <div>
-          <div style={styles.recipeTitle}>Your blood sugar has gone down 5 percent this week!</div>
-        </div>
-
-        <ListItemSecondaryAction>
-          <IconButton aria-label="Log Blood Sugar">
-            See Your Numbers
-          </IconButton>
-        </ListItemSecondaryAction>
-
+        <div style={styles.recipeTitle}>Your blood sugar has gone down 5 percent this week!</div>
       </ListItem>
     );
   }

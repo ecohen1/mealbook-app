@@ -4,11 +4,17 @@ import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
 
+import recipes from '../common/recipes'
+
 const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    marginTop: '5%'
+  },
+  recipeTitle: {
+    marginBottom: '3%'
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -32,26 +38,25 @@ class RecipeList extends React.Component {
   };
 
   render() {
-    let imgUrls = [
-      "http://simpledoing.com/wp-content/uploads/2018/01/Hello-Fresh.jpg",
-      "http://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2014/12/main/1501p77-salmon-lime-hoisin-glaze-crunchy-bok-choy-slaw.jpg?itok=6dF2Fohu",
-      "http://images.media-allrecipes.com/images/71852.jpg",
-      "https://imagesvc.timeincapp.com/v3/mm/image?url=http%3A%2F%2Fcdn-img.health.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Flarge_16_9%2Fpublic%2F1479761250%2FGettyImages-588978788.jpg%3Fitok%3D-dDMVKmG&w=700&q=85",
-      "http://www.awakentheabswithin.com/wp-content/uploads/2012/01/healthy-meal.jpg"
-    ];
 
     return (
-      <GridList style={styles.gridList} cols={1.5}>
-        {imgUrls.map((imgUrl,idx) => (
-          <GridListTile key={"tile" + idx} style={styles.gridListTile}>
-            <img src={imgUrl} />
-            <GridListTileBar
-              style={styles.titleBar}
-              title={"ham"}
-            />
-          </GridListTile>
-        ))}
-      </GridList>
+      <div style={styles.root}>
+        <Typography variant="display2" color="inherit" style={styles.recipeTitle}>
+          Your Recipes
+        </Typography>
+
+        <GridList style={styles.gridList} cols={1.5}>
+          {recipes.map((recipe,idx) => (
+            <GridListTile key={"tile" + idx} style={styles.gridListTile}>
+              <img src={recipe.imgUrl} />
+              <GridListTileBar
+                style={styles.titleBar}
+                title={recipe.title}
+              />
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
     )
   }
 }

@@ -21,6 +21,7 @@ const styles = {
   root: {
     // backgroundColor: theme.palette.background.paper,
     width: "100%",
+    height: "50%",
     margin: "auto"
   },
   recipeImage: {
@@ -29,19 +30,7 @@ const styles = {
     marginRight: "5%",
   },
   recipeTitle: {
-    fontSize: "2em",
-    marginBottom: "15%"
-  },
-  recipeInfo: {
-    fontSize: "1.5em",
-    color: 'gray'
-  },
-  moreInfo: {
-    fontSize: "1.5em",
-    color: 'gray'
-  },
-  recipeIcons: {
-    fontSize: '2em'
+    fontSize: "2em"
   }
 };
 
@@ -57,16 +46,7 @@ class DailyTip extends React.Component {
     return (
       <ListItem style={styles.root} button onClick={() => {}}>
         <img src={imgUrl} style={styles.recipeImage}/>
-
-        <div>
-          <div style={styles.recipeTitle}>Fiber and protein slow the release of glucose into your blood, slowing down a blood sugar spike or crash.</div>
-        </div>
-
-        <ListItemSecondaryAction>
-          <IconButton aria-label="Log Blood Sugar">
-            Learn More
-          </IconButton>
-        </ListItemSecondaryAction>
+        <div style={styles.recipeTitle}>Fiber and protein slow the release of glucose into your blood, slowing down a blood sugar spike or crash.</div>
 
       </ListItem>
     );

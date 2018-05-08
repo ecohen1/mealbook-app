@@ -12,11 +12,12 @@ import WelcomeTitle from './WelcomeTitle'
 import StatusList from './StatusList'
 import RecipeList from './RecipeList'
 
-import { Graph } from 'react-d3-graph';
+// import { Graph } from 'react-d3-graph';
 
 const styles = {
   root: {
     width: "100%",
+    overflowX: 'hidden'
   }
 };
 
@@ -30,7 +31,6 @@ class DashboardApp extends React.Component {
 
   componentDidMount = () => {
     this.getUserData(this.state.username)
-    console.log(Graph)
   }
 
   getUserData = (userId) => {
@@ -53,8 +53,8 @@ class DashboardApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar/>
-        {this.state.hasPersonalized ? <WelcomeTitle /> : <PersonalizeButton />}
+        <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
+        {this.state.hasPersonalized ? '' : <PersonalizeButton />}
         <StatusList />
         <RecipeList />
       </div>
