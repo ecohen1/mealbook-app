@@ -25,10 +25,12 @@ const styles = {
     margin: "auto"
   },
   recipeImage: {
-    height: "150px",
-    width: "100px",
-    marginRight: "115px",
-    marginLeft: "25px",
+    height: "6%",
+    width: "6%",
+    // marginRight: "115px",
+    marginRight: "7%",
+    // marginLeft: "25px",
+    marginLeft: "4%",
   },
   recipeTitle: {
     fontSize: "2em"

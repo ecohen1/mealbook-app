@@ -76,7 +76,7 @@ class TestGraphs extends React.Component {
         data: {
             labels: ["5/2", "5/3", "5/4", "5/5", "5/6", "5/7"],
             datasets: [{
-                data: [90, 80, 85, 70, 94, 98],
+                data: [110, 109, 110, 109, 109, 108],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.1)',
                     'rgba(54, 162, 235, 0.1)',
@@ -100,7 +100,7 @@ class TestGraphs extends React.Component {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: false
                     },
                     gridLines: {
                         display: false
@@ -127,7 +127,7 @@ class TestGraphs extends React.Component {
         data: {
             labels: ["5/2", "5/3", "5/4", "5/5", "5/6", "5/7"],
             datasets: [{
-                data: [90, 80, 85, 70, 94, 98],
+                data: [140, 145, 142, 137, 140, 134],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.1)',
                     'rgba(54, 162, 235, 0.1)',
@@ -151,7 +151,7 @@ class TestGraphs extends React.Component {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: false
                     },
                     gridLines: {
                         display: false
@@ -178,7 +178,7 @@ class TestGraphs extends React.Component {
         data: {
             labels: ["5/2", "5/3", "5/4", "5/5", "5/6", "5/7"],
             datasets: [{
-                data: [90, 80, 85, 70, 94, 98],
+                data: [175, 174, 174, 174.5, 173.5, 173],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.1)',
                     'rgba(54, 162, 235, 0.1)',
@@ -202,7 +202,7 @@ class TestGraphs extends React.Component {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: false
                     },
                     gridLines: {
                         display: false
@@ -231,8 +231,8 @@ class TestGraphs extends React.Component {
               <div style={styles.row1}>
                   <h1 className="title">Fasting Blood Sugar</h1>
                   <div style={styles.row1Div}>
-                      <span style={styles.number}> 98 </span>
-                      <img style={styles.deltaPos} alt="triangle" />
+                      <span style={styles.number}> 108 mg/dL </span>
+                      <img style={styles.deltaNeg} alt="triangle" />
                   </div>
               </div>
               <div style={styles.chartContainer}>
@@ -243,8 +243,8 @@ class TestGraphs extends React.Component {
               <div style={styles.row1}>
                   <h1 className="title">Daily Average Blood Sugar</h1>
                   <div style={styles.row1Div}>
-                      <span style={styles.number}> 98 </span>
-                      <img style={styles.deltaPos} alt="triangle" />
+                      <span style={styles.number}> 134 mg/dL </span>
+                      <img style={styles.deltaNeg} alt="triangle" />
                   </div>
               </div>
               <div style={styles.chartContainer}>
@@ -255,7 +255,7 @@ class TestGraphs extends React.Component {
               <div style={styles.row1}>
                   <h1 className="title">Weight</h1>
                   <div style={styles.row1Div}>
-                      <span style={styles.number}> 98 </span>
+                      <span style={styles.number}> 173 lbs </span>
                       <img style={styles.deltaNeg} alt="triangle" />
                   </div>
               </div>

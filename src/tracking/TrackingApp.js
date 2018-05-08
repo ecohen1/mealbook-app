@@ -24,26 +24,26 @@ class TrackingApp extends React.Component {
     username: 'test'
   };
 
-  componentDidMount = () => {
-    this.getUserData(this.state.username)
-  }
-
-  getUserData = (userId) => {
-    var self = this
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
-      if (snapshot.val()) {
-        let userData = snapshot.val();
-        //get meals for user
-        var meals = userData.meals;
-        //see whether user has filled out personalization form
-        var hasPersonalized = userData.hasPersonalized;
-        //set new state
-        self.setState({meals, hasPersonalized})
-      } else {
-        self.setState({hasPersonalized: false})
-      }
-    });
-  }
+  // componentDidMount = () => {
+  //   this.getUserData(this.state.username)
+  // }
+  //
+  // getUserData = (userId) => {
+  //   var self = this
+  //   return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+  //     if (snapshot.val()) {
+  //       let userData = snapshot.val();
+  //       //get meals for user
+  //       var meals = userData.meals;
+  //       //see whether user has filled out personalization form
+  //       var hasPersonalized = userData.hasPersonalized;
+  //       //set new state
+  //       self.setState({meals, hasPersonalized})
+  //     } else {
+  //       self.setState({hasPersonalized: false})
+  //     }
+  //   });
+  // }
 
   render() {
     return (

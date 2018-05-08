@@ -17,7 +17,8 @@ const styles = {
     marginBottom: "0%"
   },
   logo: {
-    width: "20%",
+    width: "16%",
+    // height: "80%",
     marginTop: "0.5%",
     marginBottom: "0.5%"
   },
@@ -53,7 +54,7 @@ class SimpleAppBar extends React.Component {
             <img src="mealbook-logo-small.png" style={styles.logo}/>
 
             <Typography variant="title" color="inherit" style={styles.hello}>
-              Welcome, Clare!
+              Welcome, Eli!
             </Typography>
 
             <div>

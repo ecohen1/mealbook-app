@@ -56,7 +56,6 @@ class DashboardApp extends React.Component {
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
         <br></br>
         <StatusList />
-        <br></br>
         <RecipeList />
       </div>
     )

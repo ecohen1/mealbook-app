@@ -18,6 +18,10 @@ const styles = {
     width: "100%",
     margin: "auto"
   },
+  paperSheet: {
+    // width: '95%',
+    // margin: 'auto'
+  }
 };
 
 class StatusList extends React.Component {
@@ -28,11 +32,11 @@ class StatusList extends React.Component {
 
     return (
       <List style={styles.root}>
-        <PaperSheet>
+        <PaperSheet style={styles.paperSheet}>
           <BloodSugarStatus />
         </PaperSheet>
         <br></br>
-        <PaperSheet>
+        <PaperSheet style={styles.paperSheet}>
           <DailyTip />
         </PaperSheet>
       </List>

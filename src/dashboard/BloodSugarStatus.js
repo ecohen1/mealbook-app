@@ -24,9 +24,16 @@ const styles = {
     margin: "auto"
   },
   recipeImage: {
-    height: "150px",
-    width: "150px",
+    // height: "150px",
+    // width: "150px",
+    // marginRight: "5%",
+    height: "7%",
+    width: "10%",
+    // marginRight: "115px",
     marginRight: "5%",
+    // marginLeft: "25px",
+    marginLeft: "2%",
+
   },
   recipeTitle: {
     fontSize: "2em",

@@ -9,6 +9,8 @@ const styles = {
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: 3,
+    width: '97%',
+    margin: 'auto'
   },
 };
 
