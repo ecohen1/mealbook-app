@@ -47,7 +47,9 @@ class RecipeList extends React.Component {
   goToRecipeInfo = (e) => {
     let imgUrl = e.target.src;
     let recipeUrl = recipes.filter((r) => r.imgUrl == imgUrl)[0].recipeUrl;
-    window.location.href = recipeUrl;
+    // window.location.href = recipeUrl;
+    var win = window.open(recipeUrl, '_blank');
+    win.focus();
   }
 
   render() {

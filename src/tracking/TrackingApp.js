@@ -7,6 +7,7 @@ import Select from 'material-ui/Select';
 import * as firebase from "firebase";
 
 import SimpleAppBar from '../common/SimpleAppBar'
+import TestGraphs from './TestGraphs'
 
 const styles = {
   root: {
@@ -48,6 +49,7 @@ class TrackingApp extends React.Component {
     return (
       <div style={styles.root}>
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
+        <TestGraphs />
       </div>
     )
   }

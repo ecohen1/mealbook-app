@@ -25,16 +25,18 @@ const styles = {
     margin: "auto"
   },
   recipeImage: {
-    height: "15%",
-    width: "15%",
-    marginRight: "5%",
+    height: "150px",
+    width: "100px",
+    marginRight: "115px",
+    marginLeft: "25px",
   },
   recipeTitle: {
     fontSize: "2em"
   }
 };
 
-const imgUrl = "https://cdn.dribbble.com/users/17619/screenshots/318757/400.png"
+// const imgUrl = "https://cdn.dribbble.com/users/17619/screenshots/318757/400.png"
+const imgUrl = "/daily-tip.png"
 
 class DailyTip extends React.Component {
   state = {
@@ -46,8 +48,14 @@ class DailyTip extends React.Component {
     return (
       <ListItem style={styles.root} button onClick={() => {}}>
         <img src={imgUrl} style={styles.recipeImage}/>
-        <div style={styles.recipeTitle}>Fiber and protein slow the release of glucose into your blood, slowing down a blood sugar spike or crash.</div>
-
+        <div style={styles.recipeTitle}>
+          <Typography variant="title" color="inherit" style={styles.hello}>
+            Daily Tip
+          </Typography>
+          <Typography variant="display1" color="inherit" style={styles.hello}>
+            Fiber and protein help keep blood sugar steady and reduce the risk of future complications!
+          </Typography>
+        </div>
       </ListItem>
     );
   }

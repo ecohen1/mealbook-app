@@ -24,8 +24,8 @@ const styles = {
     margin: "auto"
   },
   recipeImage: {
-    height: "15%",
-    width: "15%",
+    height: "150px",
+    width: "150px",
     marginRight: "5%",
   },
   recipeTitle: {
@@ -33,14 +33,15 @@ const styles = {
   },
 };
 
-const imgUrl = "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/uh59Wh0/graph-icon-cartoon-illustration-hand-drawn-animation-transparent_4jnqw3uq__F0004.png"
+const imgUrl = "/blood-sugar.png"
 
 class StatusList extends React.Component {
   state = {
   };
 
   goToMetrics = () => {
-    window.location.href = '/tracking'
+    let url = '/tracking'
+    window.location.href = url
   }
 
   render() {
@@ -49,7 +50,14 @@ class StatusList extends React.Component {
     return (
       <ListItem style={styles.root} button onClick={this.goToMetrics}>
         <img src={imgUrl} style={styles.recipeImage}/>
-        <div style={styles.recipeTitle}>Your blood sugar has gone down 5 percent this week!</div>
+        <div style={styles.recipeTitle}>
+          <Typography variant="title" color="inherit" style={styles.hello}>
+            By the numbers
+          </Typography>
+          <Typography variant="display1" color="inherit" style={styles.hello}>
+            Your blood sugar has gone down 5&#37; this week! Click to see more.
+          </Typography>
+        </div>
       </ListItem>
     );
   }
