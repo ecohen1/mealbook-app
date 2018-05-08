@@ -15,12 +15,12 @@ const recipes = [
     recipeUrl: "https://www.diabetesfoodhub.org/recipes/malabar-mixed-seafood-curry.html"
   },
   {
-    imgUrl: "https://www.diabetesfoodhub.org/system/thumbs/system/images/recipes/2016-06-grilled-seafood-and-quinoa-salad-with-mango-and-avocado_2152202648.jpg",
-    title: "Grilled Seafood and Quinoa Salad with Mango and Avocado",
+    imgUrl: "https://www.diabetesfoodhub.org/system/thumbs/system/images/recipes/apr-2014-salmon-maki-rolls_2152202648.jpg",
+    title: "Brown Rice Salmon Maki",
     // nutritionFactsUrl: "",
-    servings: 4,
-    calories: 470,
-    recipeUrl: "https://www.diabetesfoodhub.org/recipes/grilled-seafood-and-quinoa-salad-with-mango-and-avocado.html"
+    servings: 2,
+    calories: 270,
+    recipeUrl: "https://www.diabetesfoodhub.org/recipes/brown-rice-salmon-maki.html"
   },
 ]
 

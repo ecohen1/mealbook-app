@@ -39,11 +39,15 @@ class StatusList extends React.Component {
   state = {
   };
 
+  goToMetrics = () => {
+    window.location.href = '/tracking'
+  }
+
   render() {
     const { recipe } = this.props;
 
     return (
-      <ListItem style={styles.root} button onClick={() => {}}>
+      <ListItem style={styles.root} button onClick={this.goToMetrics}>
         <img src={imgUrl} style={styles.recipeImage}/>
         <div style={styles.recipeTitle}>Your blood sugar has gone down 5 percent this week!</div>
       </ListItem>

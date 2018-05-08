@@ -4,6 +4,7 @@ import RecipeApp from '../recipes/RecipeApp';
 import AdminApp from '../admin/AdminApp';
 import RecipeInfoApp from '../recipeInfo/RecipeInfoApp';
 import DashboardApp from '../dashboard/DashboardApp'
+import TrackingApp from '../tracking/TrackingApp'
 
 import * as firebase from "firebase";
 var config = {
@@ -22,6 +23,7 @@ const Root = () => {
         <Route path="/recipes" component={RecipeApp} exact />
         <Route path="/admin" component={AdminApp} exact />
         <Route path="/recipe-info" component={RecipeInfoApp} exact />
+        <Route path="/tracking" component={TrackingApp} exact />
       </Switch>
     </Router>
   );

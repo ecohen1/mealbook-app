@@ -7,11 +7,6 @@ import Select from 'material-ui/Select';
 import * as firebase from "firebase";
 
 import SimpleAppBar from '../common/SimpleAppBar'
-import WelcomeTitle from './WelcomeTitle'
-import StatusList from './StatusList'
-import RecipeList from './RecipeList'
-
-// import { Graph } from 'react-d3-graph';
 
 const styles = {
   root: {
@@ -20,7 +15,7 @@ const styles = {
   }
 };
 
-class DashboardApp extends React.Component {
+class TrackingApp extends React.Component {
   state = {
     meals: [
     ],
@@ -53,11 +48,9 @@ class DashboardApp extends React.Component {
     return (
       <div style={styles.root}>
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
-        <StatusList />
-        <RecipeList />
       </div>
     )
   }
 }
 
-export default DashboardApp;
+export default TrackingApp;
