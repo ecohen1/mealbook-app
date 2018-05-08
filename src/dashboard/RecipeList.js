@@ -5,6 +5,7 @@ import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
 
 import recipes from '../common/recipes'
+import PaperSheet from '../common/PaperSheet'
 
 const styles = {
   root: {
@@ -28,7 +29,6 @@ const styles = {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
-    marginBottom: '10%'
   },
   gridListTile: {
     height: "500px",
@@ -38,6 +38,9 @@ const styles = {
     fontSize: '20px',
     background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+  paperGridList: {
+    marginBottom: '10%'
+  }
 };
 
 class RecipeList extends React.Component {
@@ -61,17 +64,20 @@ class RecipeList extends React.Component {
         </Typography>
 
         <br></br>
-        <GridList style={styles.gridList} cols={1.5} onClick={this.goToRecipeInfo}>
-          {recipes.map((recipe,idx) => (
-            <GridListTile key={"tile" + idx} style={styles.gridListTile}>
-              <img src={recipe.imgUrl}/>
-              <GridListTileBar
-                style={styles.titleBar}
-                title={<Typography variant="display1" color="inherit">{recipe.title}</Typography>}
-              />
-            </GridListTile>
-          ))}
-        </GridList>
+        <PaperSheet>
+          <GridList style={styles.gridList} cols={1.5} onClick={this.goToRecipeInfo}>
+            {recipes.map((recipe,idx) => (
+              <GridListTile key={"tile" + idx} style={styles.gridListTile}>
+                <img src={recipe.imgUrl}/>
+                <GridListTileBar
+                  style={styles.titleBar}
+                  title={<Typography variant="display1" color="inherit">{recipe.title}</Typography>}
+                />
+              </GridListTile>
+            ))}
+          </GridList>
+        </PaperSheet>
+        <br></br><br></br><br></br><br></br><br></br><br></br>
       </div>
     )
   }

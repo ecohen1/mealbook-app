@@ -10,6 +10,7 @@ import SimpleAppBar from '../common/SimpleAppBar'
 import WelcomeTitle from './WelcomeTitle'
 import StatusList from './StatusList'
 import RecipeList from './RecipeList'
+import PaperSheet from '../common/PaperSheet'
 
 // import { Graph } from 'react-d3-graph';
 
@@ -53,7 +54,9 @@ class DashboardApp extends React.Component {
     return (
       <div style={styles.root}>
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
+        <br></br>
         <StatusList />
+        <br></br>
         <RecipeList />
       </div>
     )

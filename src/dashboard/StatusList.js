@@ -10,6 +10,7 @@ import Divider from 'material-ui/Divider';
 
 import BloodSugarStatus from './BloodSugarStatus'
 import DailyTip from './DailyTip'
+import PaperSheet from '../common/PaperSheet'
 
 const styles = {
   root: {
@@ -27,10 +28,13 @@ class StatusList extends React.Component {
 
     return (
       <List style={styles.root}>
-        <BloodSugarStatus />
-        <Divider />
-        <DailyTip />
-        <Divider />
+        <PaperSheet>
+          <BloodSugarStatus />
+        </PaperSheet>
+        <br></br>
+        <PaperSheet>
+          <DailyTip />
+        </PaperSheet>
       </List>
     );
   }
