@@ -8,28 +8,35 @@ import recipes from '../common/recipes'
 
 const styles = {
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // justifyContent: 'space-around',
     marginTop: '5%'
   },
   recipeTitle: {
-    marginBottom: '3%'
+    marginBottom: '3%',
+    width: "50%",
+    margin: 'auto',
+    textAlign: 'center'
+  },
+  exploreAll: {
+    color: 'black',
+    fontSize: '0.5em',
+    textDecoration: 'none'
   },
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
+    transform: 'translateZ(0)',
+    marginBottom: '10%'
   },
   gridListTile: {
-    height: "500px"
-  },
-  title: {
-    color: "black",
+    height: "500px",
+    cursor: 'pointer'
   },
   titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    fontSize: '20px',
+    background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 };
 
@@ -37,21 +44,28 @@ class RecipeList extends React.Component {
   state = {
   };
 
+  goToRecipeInfo = (e) => {
+    let imgUrl = e.target.src;
+    let recipeUrl = recipes.filter((r) => r.imgUrl == imgUrl)[0].recipeUrl;
+    window.location.href = recipeUrl;
+  }
+
   render() {
 
     return (
       <div style={styles.root}>
         <Typography variant="display2" color="inherit" style={styles.recipeTitle}>
-          Your Recipes
+          Your Recipes <a href="/recipes" style={styles.exploreAll}>explore all &gt;&gt;</a>
         </Typography>
 
-        <GridList style={styles.gridList} cols={1.5}>
+        <br></br>
+        <GridList style={styles.gridList} cols={1.5} onClick={this.goToRecipeInfo}>
           {recipes.map((recipe,idx) => (
             <GridListTile key={"tile" + idx} style={styles.gridListTile}>
-              <img src={recipe.imgUrl} />
+              <img src={recipe.imgUrl}/>
               <GridListTileBar
                 style={styles.titleBar}
-                title={recipe.title}
+                title={<Typography variant="display1" color="inherit">{recipe.title}</Typography>}
               />
             </GridListTile>
           ))}

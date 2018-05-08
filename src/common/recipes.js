@@ -1,25 +1,26 @@
-let imgUrls = [
-  "http://simpledoing.com/wp-content/uploads/2018/01/Hello-Fresh.jpg",
-  "http://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2014/12/main/1501p77-salmon-lime-hoisin-glaze-crunchy-bok-choy-slaw.jpg?itok=6dF2Fohu",
-  "http://images.media-allrecipes.com/images/71852.jpg",
-];
-
 const recipes = [
   {
-    imgUrl: "http://simpledoing.com/wp-content/uploads/2018/01/Hello-Fresh.jpg",
-    title: ""
+    imgUrl: "https://www.diabetesfoodhub.org/system/thumbs/system/images/recipes/Recid_122_Budget-Friendly_Greek_Salad_and_Grilled_Shrimp_Pitas_MG_5729-%28ZF-5661-35964-1-016%29_02272018_2251370607.jpg",
+    title: "Greek Salad and Grilled Shrimp Pitas",
+    // nutritionFactsUrl: '/nutrition/cajun-seafood-pasta.png',
+    servings: 4,
+    calories: 160,
+    recipeUrl: "https://www.diabetesfoodhub.org/recipes/budget-friendly-greek-salad-and-grilled-shrimp-pitas.html"
   },
   {
-    imgUrl: "https://images.media-allrecipes.com/userphotos/560x315/1045817.jpg",
-    title: "Cajun Seafood Pasta",
-    nutritionFactsUrl: '/nutrition/cajun-seafood-pasta.png',
-    servings: 6,
-    calories: 695,
-    recipeUrl: "https://www.allrecipes.com/recipe/11688/cajun-seafood-pasta/"
+    imgUrl: "https://www.diabetesfoodhub.org/system/thumbs/system/images/recipes/RecId_763_MalabarMixedSeafoodCurry_IndianCuisine_050318_2959761669.jpg",
+    title: "Malabar Mixed Seafood Curry",
+    servings: 8,
+    calories: 240,
+    recipeUrl: "https://www.diabetesfoodhub.org/recipes/malabar-mixed-seafood-curry.html"
   },
   {
-    imgUrl: "http://images.media-allrecipes.com/images/71852.jpg",
-    title: "Low Carb Taco Bowl"
+    imgUrl: "https://www.diabetesfoodhub.org/system/thumbs/system/images/recipes/2016-06-grilled-seafood-and-quinoa-salad-with-mango-and-avocado_2152202648.jpg",
+    title: "Grilled Seafood and Quinoa Salad with Mango and Avocado",
+    // nutritionFactsUrl: "",
+    servings: 4,
+    calories: 470,
+    recipeUrl: "https://www.diabetesfoodhub.org/recipes/grilled-seafood-and-quinoa-salad-with-mango-and-avocado.html"
   },
 ]
 

@@ -70,11 +70,11 @@ class SimpleAppBar extends React.Component {
                 anchorEl={this.state.anchorEl}
                 anchorOrigin={{
                   vertical: 'bottom',
-                  horizontal: 'right',
+                  horizontal: 'left',
                 }}
                 transformOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
+                  vertical: 'top',
+                  horizontal: 'left',
                 }}
                 open={this.state.open}
                 onClose={this.handleClose}
