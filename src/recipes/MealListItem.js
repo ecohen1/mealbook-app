@@ -56,11 +56,12 @@ class MealListItem extends React.Component {
 
   redirectToRecipe = (e) => {
     // const { recipe } = this.props;
-    // var redirectUrl = '/recipe?' + escape(recipe.name)
+    // var redirectUrl = '/recipe?' + escape(recipe.title)
     // var win = window.open(redirectUrl, '_blank');
     // win.focus();
     const { recipe } = this.props;
-    var win = window.open(recipe.url, '_blank');
+    // var win = window.open(recipe.recipeUrl, '_blank');
+    var win = window.open('/recipe-info?id=3145', '_blank');
     win.focus();
   }
 
@@ -96,26 +97,26 @@ class MealListItem extends React.Component {
         <img src={recipe.imgUrl} style={styles.recipeImage}/>
 
         <div>
-          <div style={styles.recipeTitle}>{recipe.name}</div>
+          <div style={styles.recipeTitle}>{recipe.title}</div>
           <div style={styles.recipeInfo}>
-            {recipe.cal} cal &nbsp;&nbsp;&nbsp; {recipe.prepTime} minutes
+            {recipe.calories} cal &nbsp;&nbsp;&nbsp; {recipe.prepTime} minutes
           </div>
         </div>
-
-        <ListItemSecondaryAction>
-          <IconButton aria-label="Log Blood Sugar">
-            <BloodSugarLogIcon style={styles.recipeIcons} onClick={this.openLogBloodSugarModal}/>
-          </IconButton>
-          <IconButton aria-label="See Nutrition Facts" onClick={this.openNutritionFactsModal}>
-            <NutritionFactsIcon style={styles.recipeIcons} />
-          </IconButton>
-        </ListItemSecondaryAction>
-
-        <NutritionFactsModal nutritionFactsUrl={recipe.nutritionFactsUrl} isOpen={this.state.showNutritionFactsModal} closeModal={this.closeNutritionFactsModal}/>
 
       </ListItem>
     );
   }
 }
-// <LogBloodSugarModal isOpen={this.state.showLogBloodSugarModal} closeModal={this.closeLogBloodSugarModal}/>
+
+        // <ListItemSecondaryAction>
+        //   <IconButton aria-label="Log Blood Sugar">
+        //     <BloodSugarLogIcon style={styles.recipeIcons} onClick={this.openLogBloodSugarModal}/>
+        //   </IconButton>
+        //   <IconButton aria-label="See Nutrition Facts" onClick={this.openNutritionFactsModal}>
+        //     <NutritionFactsIcon style={styles.recipeIcons} />
+        //   </IconButton>
+        // </ListItemSecondaryAction>
+        //
+        // <NutritionFactsModal nutritionFactsUrl={recipe.nutritionFactsUrl} isOpen={this.state.showNutritionFactsModal} closeModal={this.closeNutritionFactsModal}/>
+        // <LogBloodSugarModal isOpen={this.state.showLogBloodSugarModal} closeModal={this.closeLogBloodSugarModal}/>
 export default MealListItem;

@@ -10,6 +10,8 @@ import PersonalizeButton from '../common/PersonalizeButton'
 
 import * as firebase from "firebase";
 
+import recipes from '../common/recipes';
+
 const styles = {
   root: {
     width: "100%",
@@ -55,8 +57,8 @@ class RecipeApp extends React.Component {
     return (
       <div style={styles.root}>
         <SimpleAppBar/>
-        {this.state.hasPersonalized ? '' : <PersonalizeButton />}
-        <FullWidthTabs meals={this.state.meals}/>
+        {this.state.hasPersonalized || true ? '' : <PersonalizeButton />}
+        <FullWidthTabs meals2={this.state.meals} meals={recipes}/>
       </div>
     )
   }

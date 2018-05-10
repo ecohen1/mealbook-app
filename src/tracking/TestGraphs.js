@@ -227,42 +227,42 @@ class TestGraphs extends React.Component {
   render() {
     return (
       <div style={styles.container}>
-          <section style={styles.metricArea} id="metric1">
-              <div style={styles.row1}>
-                  <h1 className="title">Fasting Blood Sugar</h1>
-                  <div style={styles.row1Div}>
-                      <span style={styles.number}> 108 mg/dL </span>
-                      <img style={styles.deltaNeg} alt="triangle" />
-                  </div>
-              </div>
-              <div style={styles.chartContainer}>
-                  <canvas style={styles.chartContainerCanvas} id="metric1-graph"></canvas>
-              </div>
-          </section>
-          <section style={styles.metricArea} id="metric2">
-              <div style={styles.row1}>
-                  <h1 className="title">Daily Average Blood Sugar</h1>
-                  <div style={styles.row1Div}>
-                      <span style={styles.number}> 134 mg/dL </span>
-                      <img style={styles.deltaNeg} alt="triangle" />
-                  </div>
-              </div>
-              <div style={styles.chartContainer}>
-                  <canvas style={styles.chartContainerCanvas} id="metric2-graph"></canvas>
-              </div>
-          </section>
-          <section style={styles.metricArea} id="metric3">
-              <div style={styles.row1}>
-                  <h1 className="title">Weight</h1>
-                  <div style={styles.row1Div}>
-                      <span style={styles.number}> 173 lbs </span>
-                      <img style={styles.deltaNeg} alt="triangle" />
-                  </div>
-              </div>
-              <div style={styles.chartContainer}>
-                  <canvas style={styles.chartContainerCanvas} id="metric3-graph"></canvas>
-              </div>
-          </section>
+        <section style={styles.metricArea} id="metric3">
+            <div style={styles.row1}>
+                <h1 className="title">Weight</h1>
+                <div style={styles.row1Div}>
+                    <span style={styles.number}> 173 lbs </span>
+                    <img style={styles.deltaNeg} alt="triangle" />
+                </div>
+            </div>
+            <div style={styles.chartContainer}>
+                <canvas style={styles.chartContainerCanvas} id="metric3-graph"></canvas>
+            </div>
+        </section>
+        <section style={styles.metricArea} id="metric1">
+            <div style={styles.row1}>
+                <h1 className="title">Fasting Blood Sugar</h1>
+                <div style={styles.row1Div}>
+                    <span style={styles.number}> 108 mg/dL </span>
+                    <img style={styles.deltaNeg} alt="triangle" />
+                </div>
+            </div>
+            <div style={styles.chartContainer}>
+                <canvas style={styles.chartContainerCanvas} id="metric1-graph"></canvas>
+            </div>
+        </section>
+        <section style={styles.metricArea} id="metric2">
+            <div style={styles.row1}>
+                <h1 className="title">Daily Average Blood Sugar</h1>
+                <div style={styles.row1Div}>
+                    <span style={styles.number}> 134 mg/dL </span>
+                    <img style={styles.deltaNeg} alt="triangle" />
+                </div>
+            </div>
+            <div style={styles.chartContainer}>
+                <canvas style={styles.chartContainerCanvas} id="metric2-graph"></canvas>
+            </div>
+        </section>
       </div>
     )
   }

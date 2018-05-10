@@ -34,10 +34,11 @@ class App extends React.Component {
     var meals = this.state.meals
     var emptyForm = {
       type: '',
-      name: '',
-      url: '',
+      title: '',
+      recipeUrl: '',
       imgUrl: '',
-      cal: '',
+      calories: '',
+      servings: '',
       prepTime: '',
       nutritionFactsUrl: ''
     }
@@ -49,7 +50,7 @@ class App extends React.Component {
   updateState = (meal, idx) => {
     var meals = this.state.meals
     meals[idx] = meal
-    this.setState({meals}, this.updateDB)
+    this.setState({meals}, this.updateDB)//should updateDB first, then pull new state
   }
 
   updateDB = () => {

@@ -74,10 +74,10 @@ class MealForm extends React.Component {
     return (
       <form style={styles.root} action="" autoComplete="off" onSubmit={this.saveForm}>
         <TypeField val={this.state.type} updateParent={(val) => this.updateField('type', val)}/>
-        <NameField val={this.state.name} updateParent={(val) => this.updateField('name', val)}/>
-        <UrlField val={this.state.url} updateParent={(val) => this.updateField('url', val)}/>
+        <NameField val={this.state.title} updateParent={(val) => this.updateField('title', val)}/>
+        <UrlField val={this.state.recipeUrl} updateParent={(val) => this.updateField('recipeUrl', val)}/>
         <ImgUrlField val={this.state.imgUrl} updateParent={(val) => this.updateField('imgUrl', val)}/>
-        <CalField val={this.state.cal} updateParent={(val) => this.updateField('cal', val)}/>
+        <CalField val={this.state.calories} updateParent={(val) => this.updateField('calories', val)}/>
         <PrepTimeField val={this.state.prepTime} updateParent={(val) => this.updateField('prepTime', val)}/>
         <NutritionFactsUrlField val={this.state.nutritionFactsUrl} updateParent={(val) => this.updateField('nutritionFactsUrl', val)}/>
       </form>

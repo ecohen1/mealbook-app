@@ -61,6 +61,7 @@ class RecipeList extends React.Component {
   }
 
   render() {
+    const { recipes } = this.props
 
     return (
       <div style={styles.root}>

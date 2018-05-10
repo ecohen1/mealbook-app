@@ -10,11 +10,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-
 const styles = {
   root: {
     flexGrow: 1,
-    marginBottom: "0%"
+    marginBottom: "2%"
   },
   logo: {
     width: "16%",

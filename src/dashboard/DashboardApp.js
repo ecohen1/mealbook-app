@@ -12,7 +12,7 @@ import StatusList from './StatusList'
 import RecipeList from './RecipeList'
 import PaperSheet from '../common/PaperSheet'
 
-// import { Graph } from 'react-d3-graph';
+import recipes from '../common/recipes'
 
 const styles = {
   root: {
@@ -56,7 +56,7 @@ class DashboardApp extends React.Component {
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
         <br></br>
         <StatusList />
-        <RecipeList />
+        <RecipeList recipes={recipes}/>
       </div>
     )
   }
