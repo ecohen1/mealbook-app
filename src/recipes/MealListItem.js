@@ -59,10 +59,11 @@ class MealListItem extends React.Component {
     // var redirectUrl = '/recipe?' + escape(recipe.title)
     // var win = window.open(redirectUrl, '_blank');
     // win.focus();
-    const { recipe } = this.props;
+    // const { recipe } = this.props;
     // var win = window.open(recipe.recipeUrl, '_blank');
-    var win = window.open('/recipe-info?id=3145', '_blank');
-    win.focus();
+    // var win = window.open('/recipe-info?id=3145', '_blank');
+    // win.focus();
+    window.location.href = '/recipe-info?id=3145'
   }
 
   toggleBloodSugar = () => {

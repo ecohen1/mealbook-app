@@ -38,6 +38,10 @@ class SimpleAppBar extends React.Component {
     anchorEl: null
   };
 
+  redirectToProfile = () => {
+    window.location.href = '/profile'
+  }
+
   handleMenu = (e) => {
     this.setState({open: true, anchorEl: e.currentTarget})
   }
@@ -80,8 +84,7 @@ class SimpleAppBar extends React.Component {
                 open={this.state.open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
               </Menu>
             </div>
           </Toolbar>

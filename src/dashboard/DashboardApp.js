@@ -7,7 +7,6 @@ import Select from 'material-ui/Select';
 import * as firebase from "firebase";
 
 import SimpleAppBar from '../common/SimpleAppBar'
-import WelcomeTitle from './WelcomeTitle'
 import StatusList from './StatusList'
 import RecipeList from './RecipeList'
 import PaperSheet from '../common/PaperSheet'
