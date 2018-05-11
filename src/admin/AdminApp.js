@@ -30,21 +30,21 @@ class App extends React.Component {
     this.getRecipeData()
   }
 
-  guid = () => {
+  generateId = () => {
     function s4() {
       return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);
     }
     // return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    return s4() + s4();
+    return s4();
   }
 
   addForm = () => {
     var meals = this.state.meals
     var emptyMeal = {
       type: '',
-      id: this.guid(),
+      id: this.generateId(),
       title: '',
       recipeUrl: '',
       imgUrl: '',
