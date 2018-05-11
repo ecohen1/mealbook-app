@@ -61,7 +61,7 @@ class RecipeInfoApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar />
+        <SimpleAppBar linkTo={'/?home'} />
         <Card style={styles.card}>
 
           <CardMedia

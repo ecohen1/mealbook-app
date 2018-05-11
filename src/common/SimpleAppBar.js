@@ -50,12 +50,16 @@ class SimpleAppBar extends React.Component {
     this.setState({open: false, anchorEl: null})
   }
 
+  redirectToLink = () => {
+    window.location.href = this.props.linkTo ? this.props.linkTo : '/'
+  }
+
   render() {
     return (
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>
           <Toolbar>
-            <img src="mealbook-logo-small.png" style={styles.logo} onClick={() => window.location.href='/'}/>
+            <img src="mealbook-logo-small.png" style={styles.logo} onClick={this.redirectToLink}/>
 
             <Typography variant="title" color="inherit" style={styles.hello}>
               Welcome, Eli!

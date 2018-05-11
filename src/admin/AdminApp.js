@@ -14,26 +14,37 @@ import * as firebase from "firebase";
 
 const styles = {
   paper: {
-    // marginLeft: "2%",
+    marginBottom: "3%",
     // marginRight: "2%",
   }
 }
 
 class App extends React.Component {
   state = {
-    meals: [
-    ],
-    username: this.props.location.search.substring(1)
+    meals: {},
+    // username: this.props.location.search.substring(1)
   };
 
   componentDidMount = () => {
-    this.getUserData(this.state.username)
+    // this.getUserData(this.state.username)
+    this.getRecipeData()
+  }
+
+  guid = () => {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    // return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    return s4() + s4();
   }
 
   addForm = () => {
     var meals = this.state.meals
-    var emptyForm = {
+    var emptyMeal = {
       type: '',
+      id: this.guid(),
       title: '',
       recipeUrl: '',
       imgUrl: '',
@@ -42,48 +53,48 @@ class App extends React.Component {
       prepTime: '',
       nutritionFactsUrl: ''
     }
-    // meals.splice(0,0,emptyForm)
-    meals.push(emptyForm)
+    // meals.splice(0,0,emptyMeal)
+    meals[emptyMeal.id] = emptyMeal
     this.setState({meals})
   }
 
   updateState = (meal, idx) => {
     var meals = this.state.meals
-    meals[idx] = meal
-    this.setState({meals}, this.updateDB)//should updateDB first, then pull new state
+    meals[meal.id] = meal
+    this.setState({meals: {...meals}}, this.updateDB)//should updateDB first, then pull new state
   }
 
   updateDB = () => {
-    firebase.database().ref('users/' + this.state.username).set({
-      meals: this.state.meals,
-      hasPersonalized: true
+    console.log({
+      ...this.state.meals
+    })
+    firebase.database().ref('recipes/').set({
+      ...this.state.meals
     });
   }
 
-  getUserData = (userId) => {
+  getRecipeData = () => {
     var self = this
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+    return firebase.database().ref('recipes/').once('value').then(function(snapshot) {
       if (snapshot.val()) {
-        let userData = snapshot.val();
-        //get meals for user
-        var meals = userData.meals;
-        //set new state
-        self.setState({meals})
+        let meals = snapshot.val();
+        self.setState({meals: {...meals}})
       }
     });
   }
 
   render() {
     let self = this
-    var allMeals = []
-
+    console.log(Object.keys(this.state.meals));
     return (
       <div>
         <SimpleAppBar />
         {
-          this.state.meals.map((meal, idx) => {
+          Object.keys(this.state.meals).map((mealKey, idx) => {
+            let meal = this.state.meals[mealKey]
+            console.log(meal)
             return (
-              <PaperSheet key={'Paper'+idx}>
+              <PaperSheet key={'Paper'+idx} moreStyles={styles.paper}>
                 <MealForm meal={meal} idx={idx} updateState={self.updateState} />
               </PaperSheet>
             );

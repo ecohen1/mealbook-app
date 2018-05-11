@@ -1,0 +1,22 @@
+recipes: {
+  0: {
+    id: <uuid>,
+    cal: "400",
+    imgUrl: "https://upload.wikimedia.org/wikipedia/commons/...",
+    name: "Sandwich",
+    nutritionFactsUrl: "https://firebasestorage.googleapis.com/v0/b/mea...",
+    prepTime: "20",
+    type: "Breakfast",
+    url: "https://www.foodnetwork.com/recipes/food-networ..."
+  }
+},
+users: {
+  <userid>: {
+    hasPersonalized: true/false,
+    meals: {
+      0: {
+        id: <uuid>
+      }
+    }
+  }
+}

@@ -62,7 +62,10 @@ class RecipeList extends React.Component {
   }
 
   render() {
-    const { recipes } = this.props
+    let { recipes } = this.props
+    if (window.location.search.substring(1) != 'home') {
+      recipes = recipes.slice(1)
+    }
 
     return (
       <div style={styles.root}>
