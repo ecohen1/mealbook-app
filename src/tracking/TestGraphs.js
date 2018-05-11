@@ -3,6 +3,10 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
+import Divider from 'material-ui/Divider';
+import Button from 'material-ui/Button';
+
+import AddIcon from '@material-ui/icons/Add';
 
 import Chart from 'chart.js'
 
@@ -62,7 +66,10 @@ const styles = {
       height: '24px',
       marginLeft: '10px',
       marginTop: '4.5px',
-  }
+  },
+  addButton: {
+    marginLeft: '90%'
+  },
 };
 
 class TestGraphs extends React.Component {
@@ -74,7 +81,7 @@ class TestGraphs extends React.Component {
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["5/2", "5/3", "5/4", "5/5", "5/6", "5/7"],
+            labels: ["5/9", "5/10", "5/11", "5/12", "5/13", "5/14"],
             datasets: [{
                 data: [110, 109, 110, 109, 109, 108],
                 backgroundColor: [
@@ -125,7 +132,7 @@ class TestGraphs extends React.Component {
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["5/2", "5/3", "5/4", "5/5", "5/6", "5/7"],
+            labels: ["5/9", "5/10", "5/11", "5/12", "5/13", "5/14"],
             datasets: [{
                 data: [140, 145, 142, 137, 140, 134],
                 backgroundColor: [
@@ -176,7 +183,7 @@ class TestGraphs extends React.Component {
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["5/2", "5/3", "5/4", "5/5", "5/6", "5/7"],
+            labels: ["5/9", "5/10", "5/11", "5/12", "5/13", "5/14"],
             datasets: [{
                 data: [175, 174, 174, 174.5, 173.5, 173],
                 backgroundColor: [
@@ -228,40 +235,53 @@ class TestGraphs extends React.Component {
     return (
       <div style={styles.container}>
         <section style={styles.metricArea} id="metric3">
-            <div style={styles.row1}>
-                <h1 className="title">Weight</h1>
-                <div style={styles.row1Div}>
-                    <span style={styles.number}> 173 lbs </span>
-                    <img style={styles.deltaNeg} alt="triangle" />
-                </div>
-            </div>
-            <div style={styles.chartContainer}>
-                <canvas style={styles.chartContainerCanvas} id="metric3-graph"></canvas>
-            </div>
+          <div style={styles.row1}>
+              <h1 className="title">Weight</h1>
+              <div style={styles.row1Div}>
+                  <span style={styles.number}> 173 lbs </span>
+                  <img style={styles.deltaNeg} alt="triangle" />
+              </div>
+          </div>
+          <div style={styles.chartContainer}>
+              <canvas style={styles.chartContainerCanvas} id="metric3-graph"></canvas>
+          </div>
+          <Button variant="fab" color="primary" aria-label="add" style={styles.addButton}>
+          <AddIcon />
+          </Button>
         </section>
+
+        <Divider />
+
         <section style={styles.metricArea} id="metric1">
-            <div style={styles.row1}>
-                <h1 className="title">Fasting Blood Sugar</h1>
-                <div style={styles.row1Div}>
-                    <span style={styles.number}> 108 mg/dL </span>
-                    <img style={styles.deltaNeg} alt="triangle" />
-                </div>
-            </div>
-            <div style={styles.chartContainer}>
-                <canvas style={styles.chartContainerCanvas} id="metric1-graph"></canvas>
-            </div>
+          <div style={styles.row1}>
+              <h1 className="title">Fasting Blood Sugar</h1>
+              <div style={styles.row1Div}>
+                  <span style={styles.number}> 108 mg/dL </span>
+                  <img style={styles.deltaNeg} alt="triangle" />
+              </div>
+          </div>
+          <div style={styles.chartContainer}>
+              <canvas style={styles.chartContainerCanvas} id="metric1-graph"></canvas>
+          </div>
+          <Button variant="fab" color="primary" aria-label="add" style={styles.addButton}>
+          <AddIcon />
+          </Button>
         </section>
+
         <section style={styles.metricArea} id="metric2">
-            <div style={styles.row1}>
-                <h1 className="title">Daily Average Blood Sugar</h1>
-                <div style={styles.row1Div}>
-                    <span style={styles.number}> 134 mg/dL </span>
-                    <img style={styles.deltaNeg} alt="triangle" />
-                </div>
-            </div>
-            <div style={styles.chartContainer}>
-                <canvas style={styles.chartContainerCanvas} id="metric2-graph"></canvas>
-            </div>
+          <div style={styles.row1}>
+              <h1 className="title">Daily Average Blood Sugar</h1>
+              <div style={styles.row1Div}>
+                  <span style={styles.number}> 134 mg/dL </span>
+                  <img style={styles.deltaNeg} alt="triangle" />
+              </div>
+          </div>
+          <div style={styles.chartContainer}>
+              <canvas style={styles.chartContainerCanvas} id="metric2-graph"></canvas>
+          </div>
+          <Button variant="fab" color="primary" aria-label="add" style={styles.addButton}>
+          <AddIcon />
+          </Button>
         </section>
       </div>
     )
