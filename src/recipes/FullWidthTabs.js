@@ -12,7 +12,7 @@ import MealList from './MealList';
 
 const styles = {
   root: {
-    width: "80%",
+    width: "100%",
     margin: "auto",
   },
   tabBar: {
