@@ -51,23 +51,30 @@ class App extends React.Component {
       calories: '',
       servings: '',
       prepTime: '',
-      nutritionFactsUrl: ''
+      nutritionFactsUrl: '',
+      ingredients: [],
+      steps: [],
     }
     // meals.splice(0,0,emptyMeal)
     meals[emptyMeal.id] = emptyMeal
     this.setState({meals})
   }
 
-  updateState = (meal, idx) => {
+  updateState = (meal) => {
+    //preprocess meal
+    // let preprocessedMeal = meal
+    // let ingredients = meal.ingredients.split('\n')
+    // let steps = meal.steps.split('\n')
+    // preprocessedMeal.ingredients = ingredients
+    // preprocessedMeal.steps = steps
+
+    //set meal
     var meals = this.state.meals
     meals[meal.id] = meal
     this.setState({meals: {...meals}}, this.updateDB)//should updateDB first, then pull new state
   }
 
   updateDB = () => {
-    console.log({
-      ...this.state.meals
-    })
     firebase.database().ref('recipes/').set({
       ...this.state.meals
     });
@@ -85,17 +92,17 @@ class App extends React.Component {
 
   render() {
     let self = this
-    console.log(Object.keys(this.state.meals));
+
     return (
       <div>
         <SimpleAppBar />
         {
           Object.keys(this.state.meals).map((mealKey, idx) => {
             let meal = this.state.meals[mealKey]
-            console.log(meal)
             return (
               <PaperSheet key={'Paper'+idx} moreStyles={styles.paper}>
-                <MealForm meal={meal} idx={idx} updateState={self.updateState} />
+                {meal.id}
+                <MealForm meal={meal} updateState={self.updateState} />
               </PaperSheet>
             );
           })

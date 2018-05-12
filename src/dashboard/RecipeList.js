@@ -52,13 +52,13 @@ class RecipeList extends React.Component {
   state = {
   };
 
-  goToRecipeInfo = (e) => {
+  goToRecipeInfo = (id) => {
     // let imgUrl = e.target.src;
     // let recipeUrl = recipes.filter((r) => r.imgUrl == imgUrl)[0].recipeUrl;
     // window.location.href = recipeUrl;
     // var win = window.open(recipeUrl, '_blank');
     // win.focus();
-    window.location.href = '/recipe-info?id=3145'
+    window.location.href = '/recipe-info?id=' + id
   }
 
   render() {
@@ -75,9 +75,9 @@ class RecipeList extends React.Component {
 
         <br></br>
         <PaperSheet moreStyles={styles.paperSheet} noElevation>
-          <GridList style={styles.gridList} cols={1.5} onClick={this.goToRecipeInfo}>
+          <GridList style={styles.gridList} cols={1.5}>
             {recipes.map((recipe,idx) => (
-              <GridListTile key={"tile" + idx} style={styles.gridListTile}>
+              <GridListTile key={"tile" + idx} style={styles.gridListTile} onClick={() => this.goToRecipeInfo(recipe.id)}>
                 <img src={recipe.imgUrl}/>
                 <GridListTileBar
                   style={styles.titleBar}

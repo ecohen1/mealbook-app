@@ -22,7 +22,7 @@ import PaperSheet from '../common/PaperSheet'
 import SimpleAppBar from '../common/SimpleAppBar'
 import recipes from '../common/recipes'
 
-const recipe = recipes[0]
+// const recipe = recipes[0]
 
 const styles = {
   root: {
@@ -50,16 +50,31 @@ const styles = {
 
 class RecipeInfoApp extends React.Component {
   state = {
-    meals: [
-    ],
-    hasPersonalized: true,
-    recipeName: unescape(this.props.location.search.substring(1)),
+    recipeInfo: {
+
+    },
+    recipeId: unescape(this.props.location.search.substring(4)),
     pinned: false,
     cooked: false,
   };
 
+  componentDidMount() {
+    this.getRecipeData()
+  }
+
+  getRecipeData = () => {
+    var self = this
+    return firebase.database().ref('recipes/' + this.state.recipeId).once('value').then(function(snapshot) {
+      if (snapshot.val()) {
+        let recipe = snapshot.val();
+        self.setState({recipeInfo: {...recipe}})
+      }
+    });
+  }
+
   render() {
-    return (
+    let recipe = this.state.recipeInfo
+    return Object.keys(recipe).length == 0 ? <div></div> : (
       <div style={styles.root}>
         <SimpleAppBar linkTo={'/?home'} />
         <Card style={styles.card}>
@@ -102,7 +117,7 @@ class RecipeInfoApp extends React.Component {
               Recommended for you because: <strong>Seafood, Some Carbs, Dairy-free, Meal Prep</strong>
             </Typography>
 
-            <Grid container spacing={24} justify={3}>
+            <Grid container spacing={24} justify={'space-between'}>
               <Grid item xs={12} sm={6}>
                 <Typography gutterBottom variant="display2">
                   Ingredients

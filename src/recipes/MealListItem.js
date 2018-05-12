@@ -54,7 +54,7 @@ class MealListItem extends React.Component {
     showLogBloodSugarModal: false
   };
 
-  redirectToRecipe = (e) => {
+  redirectToRecipe = (id) => {
     // const { recipe } = this.props;
     // var redirectUrl = '/recipe?' + escape(recipe.title)
     // var win = window.open(redirectUrl, '_blank');
@@ -63,7 +63,7 @@ class MealListItem extends React.Component {
     // var win = window.open(recipe.recipeUrl, '_blank');
     // var win = window.open('/recipe-info?id=3145', '_blank');
     // win.focus();
-    window.location.href = '/recipe-info?id=3145'
+    window.location.href = '/recipe-info?id=' + id
   }
 
   toggleBloodSugar = () => {
@@ -94,7 +94,7 @@ class MealListItem extends React.Component {
     const { recipe } = this.props;
 
     return (
-      <ListItem style={styles.root} button onClick={this.redirectToRecipe}>
+      <ListItem style={styles.root} button onClick={() => this.redirectToRecipe(recipe.id)}>
         <img src={recipe.imgUrl} style={styles.recipeImage}/>
 
         <div>

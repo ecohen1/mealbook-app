@@ -10,7 +10,7 @@ import PersonalizeButton from '../common/PersonalizeButton'
 
 import * as firebase from "firebase";
 
-import recipes from '../common/recipes';
+// import recipes from '../common/recipes';
 
 const styles = {
   root: {
@@ -23,7 +23,8 @@ class RecipeApp extends React.Component {
     meals: [
     ],
     hasPersonalized: true,
-    username: this.props.location.search.substring(1)
+    // username: this.props.location.search.substring(1)
+    username: 'demo'
   };
 
   componentDidMount = () => {
@@ -38,7 +39,7 @@ class RecipeApp extends React.Component {
 
   getUserData = (userId) => {
     var self = this
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+    firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
       if (snapshot.val()) {
         let userData = snapshot.val();
         //get meals for user
@@ -46,7 +47,18 @@ class RecipeApp extends React.Component {
         //see whether user has filled out personalization form
         var hasPersonalized = userData.hasPersonalized;
         //set new state
-        self.setState({meals, hasPersonalized})
+        firebase.database().ref('recipes/').once('value').then(function(snapshot) {
+          if (snapshot.val()) {
+            let recipeData = snapshot.val();
+            var userRecipes = []
+            for (var recipeKey in recipeData) {
+              if (meals.indexOf(recipeKey) >= 0) {
+                userRecipes.push(recipeData[recipeKey])
+              }
+            }
+            self.setState({meals: userRecipes, hasPersonalized})
+          }
+        });
       } else {
         self.setState({hasPersonalized: false})
       }
@@ -58,7 +70,7 @@ class RecipeApp extends React.Component {
       <div style={styles.root}>
         <SimpleAppBar/>
         {this.state.hasPersonalized || true ? '' : <PersonalizeButton />}
-        <FullWidthTabs meals2={this.state.meals} meals={recipes}/>
+        <FullWidthTabs meals2={this.state.meals} meals={this.state.meals}/>
       </div>
     )
   }

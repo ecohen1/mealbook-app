@@ -25,7 +25,7 @@ class DashboardApp extends React.Component {
     meals: [
     ],
     hasPersonalized: true,
-    username: 'test'
+    username: 'demo'
   };
 
   componentDidMount = () => {
@@ -34,7 +34,7 @@ class DashboardApp extends React.Component {
 
   getUserData = (userId) => {
     var self = this
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+    firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
       if (snapshot.val()) {
         let userData = snapshot.val();
         //get meals for user
@@ -42,7 +42,18 @@ class DashboardApp extends React.Component {
         //see whether user has filled out personalization form
         var hasPersonalized = userData.hasPersonalized;
         //set new state
-        self.setState({meals, hasPersonalized})
+        firebase.database().ref('recipes/').once('value').then(function(snapshot) {
+          if (snapshot.val()) {
+            let recipeData = snapshot.val();
+            var userRecipes = []
+            for (var recipeKey in recipeData) {
+              if (meals.indexOf(recipeKey) >= 0) {
+                userRecipes.push(recipeData[recipeKey])
+              }
+            }
+            self.setState({meals: userRecipes, hasPersonalized})
+          }
+        });
       } else {
         self.setState({hasPersonalized: false})
       }
@@ -55,7 +66,7 @@ class DashboardApp extends React.Component {
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
         <br></br>
         <StatusList />
-        <RecipeList recipes={recipes}/>
+        <RecipeList recipes={this.state.meals}/>
       </div>
     )
   }
