@@ -6,6 +6,7 @@ import RecipeInfoApp from '../recipeInfo/RecipeInfoApp';
 import DashboardApp from '../dashboard/DashboardApp'
 import TrackingApp from '../tracking/TrackingApp'
 import ProfileApp from '../profile/ProfileApp'
+import LoginForm from '../common/LoginForm'
 
 import * as firebase from "firebase";
 var config = {
@@ -16,19 +17,37 @@ var config = {
 };
 firebase.initializeApp(config);
 
-const Root = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/" component={DashboardApp} exact />
-        <Route path="/recipes" component={RecipeApp} exact />
-        <Route path="/admin" component={AdminApp} exact />
-        <Route path="/recipe-info" component={RecipeInfoApp} exact />
-        <Route path="/tracking" component={TrackingApp} exact />
-        <Route path="/profile" component={ProfileApp} exact />
-      </Switch>
-    </Router>
-  );
+class Root extends React.Component {
+  state = {
+    loggedIn: false
+  };
+
+  login = () => {
+    this.setState({loggedIn: true})
+    localStorage.setItem('loggedIn', true)
+  }
+
+  render() {
+    console.log(localStorage.getItem('loggedIn'))
+    return (
+      <div>
+        {this.state.loggedIn || localStorage.getItem('loggedIn') ?
+          <Router>
+            <Switch>
+              <Route path="/" component={DashboardApp} exact />
+              <Route path="/recipes" component={RecipeApp} exact />
+              <Route path="/admin" component={AdminApp} exact />
+              <Route path="/recipe-info" component={RecipeInfoApp} exact />
+              <Route path="/tracking" component={TrackingApp} exact />
+              <Route path="/profile" component={ProfileApp} exact />
+            </Switch>
+          </Router>
+          :
+          <LoginForm login={this.login} />
+        }
+      </div>
+    );
+  }
 };
 
 export default Root;
