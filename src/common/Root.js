@@ -19,19 +19,16 @@ firebase.initializeApp(config);
 
 class Root extends React.Component {
   state = {
-    loggedIn: false
   };
 
   login = () => {
-    this.setState({loggedIn: true})
     localStorage.setItem('loggedIn', true)
   }
 
   render() {
-    console.log(localStorage.getItem('loggedIn'))
     return (
       <div>
-        {this.state.loggedIn || localStorage.getItem('loggedIn') ?
+        {localStorage.getItem('loggedIn') ?
           <Router>
             <Switch>
               <Route path="/" component={DashboardApp} exact />

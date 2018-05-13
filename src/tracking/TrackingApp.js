@@ -3,6 +3,8 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
+import Button from 'material-ui/Button';
+import Autorenew from '@material-ui/icons/Autorenew';
 
 import * as firebase from "firebase";
 
@@ -13,6 +15,10 @@ const styles = {
   root: {
     width: "100%",
     overflowX: 'hidden'
+  },
+  syncButton: {
+    width: '15%',
+    marginLeft: '42%'
   }
 };
 
@@ -49,6 +55,10 @@ class TrackingApp extends React.Component {
     return (
       <div style={styles.root}>
         <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
+        <Button variant="raised" color="primary" style={styles.syncButton}>
+          <Autorenew />
+          &nbsp;&nbsp;Sync with device
+        </Button>
         <TestGraphs />
       </div>
     )
