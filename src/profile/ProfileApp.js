@@ -85,7 +85,7 @@ class ProfileApp extends React.Component {
 
             <br /><br />
             <Typography gutterBottom variant="display2">
-              Numbers
+              Metrics
             </Typography>
             <Typography gutterBottom variant="headline">
               <strong>Age:  </strong>21<br/>
@@ -94,6 +94,19 @@ class ProfileApp extends React.Component {
               <strong>A1C:  </strong>6.4<br/>
               <strong>Fasting Blood Sugar:  </strong>100 mg/dL<br/>
               <strong>Race:  </strong>Caucasian<br/>
+            </Typography>
+            <br />
+
+            <Divider />
+
+            <br /><br />
+            <Typography gutterBottom variant="display2">
+              Goals
+            </Typography>
+            <Typography gutterBottom variant="headline">
+              <strong>Weight:  </strong>170<br/>
+              <strong>A1C:  </strong>6.0<br/>
+              <strong>Fasting Blood Sugar:  </strong>90 mg/dL<br/>
             </Typography>
 
           </CardContent>
