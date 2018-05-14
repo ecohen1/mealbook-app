@@ -1,11 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import SwipeableViews from 'react-swipeable-views';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
-import Avatar from 'material-ui/Avatar';
-import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
 
 const styles = {

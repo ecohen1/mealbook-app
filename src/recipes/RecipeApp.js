@@ -1,12 +1,5 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-
-import SimpleAppBar from '../common/SimpleAppBar'
 import FullWidthTabs from './FullWidthTabs'
-import PersonalizeButton from '../common/PersonalizeButton'
 
 import * as firebase from "firebase";
 
@@ -21,8 +14,8 @@ const styles = {
 class RecipeApp extends React.Component {
   state = {
     meals: [
+
     ],
-    hasPersonalized: true,
     // username: this.props.location.search.substring(1)
     username: 'demo'
   };
@@ -44,8 +37,6 @@ class RecipeApp extends React.Component {
         let userData = snapshot.val();
         //get meals for user
         var meals = userData.meals;
-        //see whether user has filled out personalization form
-        var hasPersonalized = userData.hasPersonalized;
         //set new state
         firebase.database().ref('recipes/').once('value').then(function(snapshot) {
           if (snapshot.val()) {
@@ -56,11 +47,9 @@ class RecipeApp extends React.Component {
                 userRecipes.push(recipeData[recipeKey])
               }
             }
-            self.setState({meals: userRecipes, hasPersonalized})
+            self.setState({meals: userRecipes})
           }
         });
-      } else {
-        self.setState({hasPersonalized: false})
       }
     });
   }
@@ -68,8 +57,7 @@ class RecipeApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        {this.state.hasPersonalized || true ? '' : <PersonalizeButton />}
-        <FullWidthTabs meals2={this.state.meals} meals={this.state.meals}/>
+        <FullWidthTabs meals={this.state.meals}/>
       </div>
     )
   }

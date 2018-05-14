@@ -12,7 +12,34 @@ recipes: {
 },
 users: {
   <userid>: {
-    hasPersonalized: true/false,
+    password: <string>,
+    email: <string>,
+    personalizationData: {
+      preferences: {
+        Meals: Breakfast, Dinner
+        Meal Prep: Not interested
+        Servings Per Meal: 2
+        Favorite Snacks: Nuts, Trail Mix, Apples, Chips, Cookies
+        Budget: $5-$10 per serving
+        Time to Cook: 45 minutes
+        Frequency of new foods: High
+        Allergies: None
+        Cuisines: Italian, Mexican, Asian
+      },
+      metrics: {
+        Age: 21
+        Height: 6 foot 3
+        Weight: 175
+        A1C: 6.4
+        Fasting Blood Sugar: 100 mg/dL
+        Race: Caucasian
+      },
+      goals: {
+        Weight: 170
+        A1C: 5.9
+        Fasting Blood Sugar: 90 mg/dL,
+      }
+    },
     meals: {
       0: {
         id: <uuid>

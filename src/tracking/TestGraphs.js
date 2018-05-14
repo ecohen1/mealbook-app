@@ -1,8 +1,4 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 
@@ -77,8 +73,8 @@ class TestGraphs extends React.Component {
   };
 
   componentDidMount() {
-    var ctx = document.getElementById("metric1-graph");
-    var myChart = new Chart(ctx, {
+    var ctx1 = document.getElementById("metric1-graph");
+    var myChart1 = new Chart(ctx1, {
         type: 'line',
         data: {
             labels: ["5/9", "5/10", "5/11", "5/12", "5/13", "5/14"],
@@ -128,8 +124,8 @@ class TestGraphs extends React.Component {
         }
     });
 
-    var ctx = document.getElementById("metric2-graph");
-    var myChart = new Chart(ctx, {
+    var ctx2 = document.getElementById("metric2-graph");
+    var myChart2 = new Chart(ctx2, {
         type: 'line',
         data: {
             labels: ["5/9", "5/10", "5/11", "5/12", "5/13", "5/14"],
@@ -179,8 +175,8 @@ class TestGraphs extends React.Component {
         }
     });
 
-    var ctx = document.getElementById("metric3-graph");
-    var myChart = new Chart(ctx, {
+    var ctx3 = document.getElementById("metric3-graph");
+    var myChart3 = new Chart(ctx3, {
         type: 'line',
         data: {
             labels: ["5/9", "5/10", "5/11", "5/12", "5/13", "5/14"],

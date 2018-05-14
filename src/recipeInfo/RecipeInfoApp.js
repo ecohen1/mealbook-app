@@ -1,15 +1,9 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 
-import Icon from 'material-ui/Icon';
-import AddIcon from '@material-ui/icons/Add';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import CheckBox from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank';
@@ -17,12 +11,6 @@ import TurnedIn from '@material-ui/icons/TurnedIn';
 import TurnedInNot from '@material-ui/icons/TurnedInNot';
 
 import * as firebase from "firebase";
-
-import PaperSheet from '../common/PaperSheet'
-import SimpleAppBar from '../common/SimpleAppBar'
-import recipes from '../common/recipes'
-
-// const recipe = recipes[0]
 
 const styles = {
   root: {
@@ -54,8 +42,8 @@ class RecipeInfoApp extends React.Component {
 
     },
     recipeId: unescape(this.props.location.search.substring(4)),
-    pinned: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_pinned') == "true",
-    cooked: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_cooked') == "true"
+    pinned: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_pinned') === "true",
+    cooked: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_cooked') === "true"
   };
 
   componentDidMount() {
@@ -84,7 +72,7 @@ class RecipeInfoApp extends React.Component {
 
   render() {
     let recipe = this.state.recipeInfo
-    return Object.keys(recipe).length == 0 ? <div></div> : (
+    return Object.keys(recipe).length === 0 ? <div></div> : (
       <div style={styles.root}>
         <Card style={styles.card}>
 

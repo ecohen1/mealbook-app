@@ -1,12 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-
-import * as firebase from "firebase";
 
 import { TypeField,
   NameField,
@@ -31,14 +23,14 @@ class MealForm extends React.Component {
   updateField = (fieldName, val) => {
     var stateChange = {}
 
-    if (fieldName == "ingredients") {
+    if (fieldName === "ingredients") {
       let ingredientList = val.split('\n')
       var ingredientDictList = []
       for (var ingredientKey in Object.keys(ingredientList)) {
         ingredientDictList.push({amount: '', item: ingredientList[ingredientKey]})
       }
       stateChange.ingredients = ingredientDictList
-    } else if (fieldName == "steps") {
+    } else if (fieldName === "steps") {
       let stepList = val.split('\n')
       stateChange.steps = stepList
     } else {
@@ -88,7 +80,7 @@ class MealForm extends React.Component {
   // }
 
   saveForm = () => {
-    
+
   }
 
   render() {

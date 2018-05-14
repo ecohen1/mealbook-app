@@ -1,24 +1,11 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
 
-import Icon from 'material-ui/Icon';
 import Avatar from 'material-ui/Avatar';
 
 import * as firebase from "firebase";
-
-import PaperSheet from '../common/PaperSheet'
-import SimpleAppBar from '../common/SimpleAppBar'
-import recipes from '../common/recipes'
-
-const recipe = recipes[0]
 
 const styles = {
   root: {
@@ -42,73 +29,92 @@ const styles = {
 
 class ProfileApp extends React.Component {
   state = {
-    meals: [
-    ],
-    hasPersonalized: true,
-    recipeName: unescape(this.props.location.search.substring(1)),
+    username: 'demo',
+    preferences: {},
+    metrics: {},
+    goals: {},
+    hasProfileData: false
   };
+
+  componentDidMount() {
+    this.getUserData(this.state.username)
+  }
+
+  getUserData = (userId) => {
+    var self = this
+    firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+      if (snapshot.val()) {
+        let userData = snapshot.val();
+        //get meals for user
+        let { preferences, metrics, goals } = userData.personalizationData;
+        self.setState({preferences, metrics, goals, hasProfileData: true})
+      }
+    });
+  }
+
 
   render() {
     return (
       <div style={styles.root}>
         <Card style={styles.card}>
+          {!this.state.hasProfileData ? <div/> :
+            <CardContent>
+              <div style={styles.accountName}>
+                <Avatar
+                  src="profile-pic.jpg"
+                  style={styles.accountIcon}
+                />
+                <Typography gutterBottom variant="display3">
+                  Eli Cohen
+                </Typography>
+              </div>
 
-          <CardContent>
-            <div style={styles.accountName}>
-              <Avatar
-                src="profile-pic.jpg"
-                style={styles.accountIcon}
-              />
-              <Typography gutterBottom variant="display3">
-                Eli Cohen
+              <Typography gutterBottom variant="display2">
+                Preferences
               </Typography>
-            </div>
+              <Typography gutterBottom variant="headline">
+                <strong>Meals:  </strong>{this.state.preferences.meals}<br/>
+                <strong>Meal Prep:  </strong>{this.state.preferences.mealPrep}<br/>
+                <strong>Servings Per Meal:  </strong>{this.state.preferences.servings}<br/>
+                <strong>Favorite Snacks:  </strong>{this.state.preferences.snacks}<br/>
+                <strong>Budget:  </strong>{this.state.preferences.budget}<br/>
+                <strong>Time to Cook:  </strong>{this.state.preferences.prepTime}<br/>
+                <strong>Frequency of new foods:  </strong>{this.state.preferences.newFoodFrequency}<br/>
+                <strong>Allergies:  </strong>{this.state.preferences.allergies}<br/>
+                <strong>Cuisines:  </strong>{this.state.preferences.cuisines}<br/>
+              </Typography>
+              <br />
 
-            <Typography gutterBottom variant="display2">
-              Preferences
-            </Typography>
-            <Typography gutterBottom variant="headline">
-              <strong>Meals:  </strong>Breakfast, Dinner<br/>
-              <strong>Meal Prep:  </strong>Not interested<br/>
-              <strong>Servings Per Meal:  </strong>2<br/>
-              <strong>Favorite Snacks:  </strong>Nuts, Trail Mix, Apples, Chips, Cookies<br/>
-              <strong>Budget:  </strong>$5-$10 per serving<br/>
-              <strong>Time to Cook:  </strong>45 minutes<br/>
-              <strong>Frequency of new foods:  </strong>High<br/>
-              <strong>Allergies:  </strong>None<br/>
-              <strong>Cuisines:  </strong>Italian, Mexican, Asian<br/>
-            </Typography>
-            <br />
+              <Divider />
 
-            <Divider />
+              <br /><br />
+              <Typography gutterBottom variant="display2">
+                Metrics
+              </Typography>
+              <Typography gutterBottom variant="headline">
+                <strong>Age:  </strong>{this.state.metrics.age}<br/>
+                <strong>Height:  </strong>{this.state.metrics.height.feet} foot {this.state.metrics.height.inches} inches<br/>
+                <strong>Weight:  </strong>{this.state.metrics.weight}<br/>
+                <strong>A1C:  </strong>{this.state.metrics.A1C}<br/>
+                <strong>Fasting Blood Sugar:  </strong>{this.state.metrics.fastingBloodSugar}<br/>
+                <strong>Race:  </strong>{this.state.metrics.race}<br/>
+              </Typography>
+              <br />
 
-            <br /><br />
-            <Typography gutterBottom variant="display2">
-              Metrics
-            </Typography>
-            <Typography gutterBottom variant="headline">
-              <strong>Age:  </strong>21<br/>
-              <strong>Height:  </strong>6 foot 3<br/>
-              <strong>Weight:  </strong>175<br/>
-              <strong>A1C:  </strong>6.4<br/>
-              <strong>Fasting Blood Sugar:  </strong>100 mg/dL<br/>
-              <strong>Race:  </strong>Caucasian<br/>
-            </Typography>
-            <br />
+              <Divider />
 
-            <Divider />
+              <br /><br />
+              <Typography gutterBottom variant="display2">
+                Goals
+              </Typography>
+              <Typography gutterBottom variant="headline">
+                <strong>Weight:  </strong>{this.state.goals.weight}<br/>
+                <strong>A1C:  </strong>{this.state.goals.A1C}<br/>
+                <strong>Fasting Blood Sugar:  </strong>{this.state.goals.fastingBloodSugar}<br/>
+              </Typography>
 
-            <br /><br />
-            <Typography gutterBottom variant="display2">
-              Goals
-            </Typography>
-            <Typography gutterBottom variant="headline">
-              <strong>Weight:  </strong>170<br/>
-              <strong>A1C:  </strong>6.0<br/>
-              <strong>Fasting Blood Sugar:  </strong>90 mg/dL<br/>
-            </Typography>
-
-          </CardContent>
+            </CardContent>
+          }
         </Card>
       </div>
     );

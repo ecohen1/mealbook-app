@@ -1,17 +1,9 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
 
 import * as firebase from "firebase";
 
-import SimpleAppBar from '../common/SimpleAppBar'
 import StatusList from './StatusList'
 import RecipeList from './RecipeList'
-import PaperSheet from '../common/PaperSheet'
-
-import recipes from '../common/recipes'
 
 const styles = {
   root: {
@@ -24,7 +16,6 @@ class DashboardApp extends React.Component {
   state = {
     meals: [
     ],
-    hasPersonalized: true,
     username: 'demo'
   };
 
@@ -40,7 +31,7 @@ class DashboardApp extends React.Component {
         //get meals for user
         var meals = userData.meals;
         //see whether user has filled out personalization form
-        var hasPersonalized = userData.hasPersonalized;
+
         //set new state
         firebase.database().ref('recipes/').once('value').then(function(snapshot) {
           if (snapshot.val()) {
@@ -51,11 +42,9 @@ class DashboardApp extends React.Component {
                 userRecipes.push(recipeData[recipeKey])
               }
             }
-            self.setState({meals: userRecipes, hasPersonalized})
+            self.setState({meals: userRecipes})
           }
         });
-      } else {
-        self.setState({hasPersonalized: false})
       }
     });
   }

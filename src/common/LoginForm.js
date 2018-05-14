@@ -1,16 +1,10 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
+import { FormControl } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 
 import * as firebase from "firebase";
 
-import SimpleAppBar from './SimpleAppBar'
 import PaperSheet from './PaperSheet'
-
-import recipes from '../common/recipes'
 
 const styles = {
   root: {
@@ -40,7 +34,7 @@ class LoginForm extends React.Component {
       if (snapshot.val()) {
         let userData = snapshot.val();
         var userPassword = userData.password;
-        if (testPassword == userPassword) {
+        if (testPassword === userPassword) {
           self.props.login()
         } else {
           alert('incorrect password')
@@ -61,7 +55,6 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
         <PaperSheet moreStyles={styles.paperSheet}>
           <form action="" onSubmit={this.handleSubmit}>
             <FormControl style={styles.formControl}>
