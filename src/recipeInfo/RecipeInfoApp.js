@@ -54,8 +54,8 @@ class RecipeInfoApp extends React.Component {
 
     },
     recipeId: unescape(this.props.location.search.substring(4)),
-    pinned: false,
-    cooked: false,
+    pinned: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_pinned') == "true",
+    cooked: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_cooked') == "true"
   };
 
   componentDidMount() {
@@ -72,11 +72,20 @@ class RecipeInfoApp extends React.Component {
     });
   }
 
+  handleCookedClicked = () => {
+    let recipe = this.state.recipeInfo
+    this.setState({cooked: !this.state.cooked}, () => localStorage.setItem(recipe.id + '_cooked', this.state.cooked))
+  }
+
+  handlePinnedClicked = () => {
+    let recipe = this.state.recipeInfo
+    this.setState({pinned: !this.state.pinned}, () => localStorage.setItem(recipe.id + '_pinned', this.state.pinned))
+  }
+
   render() {
     let recipe = this.state.recipeInfo
     return Object.keys(recipe).length == 0 ? <div></div> : (
       <div style={styles.root}>
-        <SimpleAppBar linkTo={'/?home'} />
         <Card style={styles.card}>
 
           <CardMedia
@@ -88,10 +97,10 @@ class RecipeInfoApp extends React.Component {
           <CardContent>
             <Typography gutterBottom variant="display3">
               {recipe.title}
-              <Button style={styles.button} variant="fab" color="primary" aria-label="add" onClick={() => this.setState({cooked: !this.state.cooked})}>
+              <Button style={styles.button} variant="fab" color="primary" aria-label="add" onClick={this.handleCookedClicked}>
                 {this.state.cooked ? <CheckBox /> : <CheckBoxOutlineBlank /> }
               </Button>
-              <Button style={styles.button} variant="fab" color="secondary" aria-label="edit" onClick={() => this.setState({pinned: !this.state.pinned})}>
+              <Button style={styles.button} variant="fab" color="secondary" aria-label="edit" onClick={this.handlePinnedClicked}>
                 {this.state.pinned ? <TurnedIn /> : <TurnedInNot /> }
               </Button>
             </Typography>

@@ -51,7 +51,6 @@ class ProfileApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar />
         <Card style={styles.card}>
 
           <CardContent>

@@ -54,6 +54,11 @@ class SimpleAppBar extends React.Component {
     window.location.href = this.props.linkTo ? this.props.linkTo : '/'
   }
 
+  handleLogout = () => {
+    this.props.logout()
+    window.location.reload()
+  }
+
   render() {
     return (
       <div style={styles.root}>
@@ -89,6 +94,7 @@ class SimpleAppBar extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
+                <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
               </Menu>
             </div>
           </Toolbar>

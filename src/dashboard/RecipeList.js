@@ -63,9 +63,6 @@ class RecipeList extends React.Component {
 
   render() {
     let { recipes } = this.props
-    if (window.location.search.substring(1) != 'home') {
-      recipes = recipes.slice(1)
-    }
 
     return (
       <div style={styles.root}>
@@ -76,7 +73,7 @@ class RecipeList extends React.Component {
         <br></br>
         <PaperSheet moreStyles={styles.paperSheet} noElevation>
           <GridList style={styles.gridList} cols={1.5}>
-            {recipes.map((recipe,idx) => (
+            {recipes.filter(recipe => localStorage.getItem(recipe.id+'_pinned') == "true").map((recipe,idx) => (
               <GridListTile key={"tile" + idx} style={styles.gridListTile} onClick={() => this.goToRecipeInfo(recipe.id)}>
                 <img src={recipe.imgUrl}/>
                 <GridListTileBar

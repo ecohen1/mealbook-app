@@ -63,8 +63,6 @@ class DashboardApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
-        <br></br>
         <StatusList />
         <RecipeList recipes={this.state.meals}/>
       </div>

@@ -95,7 +95,6 @@ class App extends React.Component {
 
     return (
       <div>
-        <SimpleAppBar />
         {
           Object.keys(this.state.meals).map((mealKey, idx) => {
             let meal = this.state.meals[mealKey]

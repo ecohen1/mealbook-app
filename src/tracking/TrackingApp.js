@@ -54,7 +54,6 @@ class TrackingApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar loggedIn={this.state.hasPersonalized}/>
         <Button variant="raised" color="primary" style={styles.syncButton}>
           <Autorenew />
           &nbsp;&nbsp;Sync with device

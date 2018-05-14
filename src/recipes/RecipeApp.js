@@ -68,7 +68,6 @@ class RecipeApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar/>
         {this.state.hasPersonalized || true ? '' : <PersonalizeButton />}
         <FullWidthTabs meals2={this.state.meals} meals={this.state.meals}/>
       </div>
