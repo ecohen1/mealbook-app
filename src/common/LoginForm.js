@@ -25,10 +25,10 @@ const styles = {
 class LoginForm extends React.Component {
   state = {
     password: '',
-    username: 'demo'
   };
 
-  tryLogin = (userId, testPassword) => {
+  tryLogin = (testPassword) => {
+    let userId = this.props.user
     var self = this
     firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
       if (snapshot.val()) {
@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.tryLogin(this.state.username, this.state.password)
+    this.tryLogin(this.state.password)
   }
 
   handleChange = (event) => {

@@ -4,6 +4,7 @@ import * as firebase from "firebase";
 
 import StatusList from './StatusList'
 import RecipeList from './RecipeList'
+import RecipeApp from '../recipes/RecipeApp'
 
 const styles = {
   root: {
@@ -52,8 +53,7 @@ class DashboardApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <StatusList />
-        <RecipeList recipes={this.state.meals}/>
+        <RecipeApp />
       </div>
     )
   }

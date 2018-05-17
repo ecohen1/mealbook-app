@@ -88,9 +88,6 @@ class RecipeInfoApp extends React.Component {
               <Button style={styles.button} variant="fab" color="primary" aria-label="add" onClick={this.handleCookedClicked}>
                 {this.state.cooked ? <CheckBox /> : <CheckBoxOutlineBlank /> }
               </Button>
-              <Button style={styles.button} variant="fab" color="secondary" aria-label="edit" onClick={this.handlePinnedClicked}>
-                {this.state.pinned ? <TurnedIn /> : <TurnedInNot /> }
-              </Button>
             </Typography>
             <Grid container spacing={24} justify={'space-between'}>
               <Grid item xs={8} sm={4}>
@@ -132,9 +129,6 @@ class RecipeInfoApp extends React.Component {
                   </ul>
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <img src={recipe.nutritionFactsUrl} />
-              </Grid>
             </Grid>
 
             <Typography gutterBottom variant="display2">
@@ -148,6 +142,9 @@ class RecipeInfoApp extends React.Component {
                 )}
               </ol>
             </Typography>
+
+            <img src={recipe.nutritionFactsUrl} />
+            <br /><br /><br /><br />
           </CardContent>
         </Card>
       </div>

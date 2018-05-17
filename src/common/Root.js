@@ -18,23 +18,38 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
 class Root extends React.Component {
   state = {
+    search: {}
   };
 
+  componentDidMount() {
+    let search = {}
+    window.location.search.substring(1).split('&')
+              .filter((param) => param != "")
+              .map((param) => {
+                return param.split("=")
+              })
+              .forEach((paramPair) => {
+                search[paramPair[0]] = paramPair[1]
+              })
+    this.setState({search})
+  }
+
   login = () => {
-    localStorage.setItem('loggedIn', true)
+    localStorage.setItem(this.state.search.user + 'LoggedIn', true)
     window.location.reload()
   }
 
   logout = () => {
-    localStorage.removeItem('loggedIn')
+    localStorage.removeItem(this.state.search.user + 'LoggedIn')
   }
 
   render() {
     return (
       <div>
-        {localStorage.getItem('loggedIn') ?
+        {localStorage.getItem(this.state.search.user + 'LoggedIn') ?
           <div>
             <SimpleAppBar loggedIn={true} logout={this.logout}/>
             <Router>
@@ -49,7 +64,7 @@ class Root extends React.Component {
             </Router>
           </div>
           :
-          <LoginForm login={this.login} />
+          <LoginForm login={this.login} user={this.state.search.user}/>
         }
       </div>
     );

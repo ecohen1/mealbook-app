@@ -39,6 +39,10 @@ class SimpleAppBar extends React.Component {
     window.location.href = '/profile'
   }
 
+  redirectToMetrics = () => {
+    window.location.href = '/tracking'
+  }
+
   handleMenu = (e) => {
     this.setState({open: true, anchorEl: e.currentTarget})
   }
@@ -91,6 +95,7 @@ class SimpleAppBar extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
+                <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem>
                 <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
               </Menu>
             </div>
