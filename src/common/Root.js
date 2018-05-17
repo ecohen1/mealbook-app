@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import RecipeApp from '../recipes/RecipeApp';
 import AdminApp from '../admin/AdminApp';
 import RecipeInfoApp from '../recipeInfo/RecipeInfoApp';
@@ -27,7 +28,7 @@ class Root extends React.Component {
   componentDidMount() {
     let search = {}
     window.location.search.substring(1).split('&')
-              .filter((param) => param != "")
+              .filter((param) => param !== "")
               .map((param) => {
                 return param.split("=")
               })
@@ -54,12 +55,12 @@ class Root extends React.Component {
             <SimpleAppBar loggedIn={true} logout={this.logout}/>
             <Router>
               <Switch>
-                <Route path="/" component={DashboardApp} exact />
-                <Route path="/recipes" component={RecipeApp} exact />
-                <Route path="/admin" component={AdminApp} exact />
-                <Route path="/recipe-info" component={RecipeInfoApp} exact />
-                <Route path="/tracking" component={TrackingApp} exact />
-                <Route path="/profile" component={ProfileApp} exact />
+                <Route path="/" render={()=><DashboardApp search={this.state.search}/>} exact />
+                <Route path="/recipes" render={()=><RecipeApp search={this.state.search}/>} exact />
+                <Route path="/admin" render={()=><AdminApp search={this.state.search}/>} exact />
+                <Route path="/recipe-info" render={()=><RecipeInfoApp search={this.state.search}/>} exact />
+                <Route path="/tracking" render={()=><TrackingApp search={this.state.search}/>} exact />
+                <Route path="/profile" render={()=><ProfileApp search={this.state.search}/>} exact />
               </Switch>
             </Router>
           </div>

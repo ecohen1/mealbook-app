@@ -17,7 +17,7 @@ class RecipeApp extends React.Component {
 
     ],
     // username: this.props.location.search.substring(1)
-    username: 'demo'
+    username: this.props.search.user
   };
 
   componentDidMount = () => {

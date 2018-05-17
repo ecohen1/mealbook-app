@@ -36,11 +36,11 @@ class SimpleAppBar extends React.Component {
   };
 
   redirectToProfile = () => {
-    window.location.href = '/profile'
+    window.location.href = '/profile' + window.location.search
   }
 
   redirectToMetrics = () => {
-    window.location.href = '/tracking'
+    window.location.href = '/tracking' + window.location.search
   }
 
   handleMenu = (e) => {
@@ -52,7 +52,7 @@ class SimpleAppBar extends React.Component {
   }
 
   redirectToLink = () => {
-    window.location.href = '/'
+    window.location.href = '/' + window.location.search
   }
 
   handleLogout = () => {

@@ -29,7 +29,7 @@ const styles = {
 
 class ProfileApp extends React.Component {
   state = {
-    username: 'demo',
+    username: this.props.search.user,
     preferences: {},
     metrics: {},
     goals: {},

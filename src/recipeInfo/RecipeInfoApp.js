@@ -7,8 +7,6 @@ import Grid from 'material-ui/Grid';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import CheckBox from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank';
-import TurnedIn from '@material-ui/icons/TurnedIn';
-import TurnedInNot from '@material-ui/icons/TurnedInNot';
 
 import * as firebase from "firebase";
 
@@ -41,9 +39,9 @@ class RecipeInfoApp extends React.Component {
     recipeInfo: {
 
     },
-    recipeId: unescape(this.props.location.search.substring(4)),
-    pinned: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_pinned') === "true",
-    cooked: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_cooked') === "true"
+    recipeId: unescape(this.props.search.id),
+    pinned: localStorage.getItem(unescape(this.props.search.id) + '_pinned') === "true",
+    cooked: localStorage.getItem(unescape(this.props.search.id) + '_cooked') === "true"
   };
 
   componentDidMount() {
@@ -108,11 +106,10 @@ class RecipeInfoApp extends React.Component {
             </Grid>
 
             <Typography gutterBottom variant="headline">
-              Recommended for you because: <strong>Seafood, Some Carbs, Dairy-free, Meal Prep</strong>
             </Typography>
 
             <Grid container spacing={24} justify={'space-between'}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={24} sm={12}>
                 <Typography gutterBottom variant="display2">
                   Ingredients
                 </Typography>
