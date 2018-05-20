@@ -52,7 +52,7 @@ class Root extends React.Component {
       <div>
         {localStorage.getItem(this.state.search.user + 'LoggedIn') ?
           <div>
-            <SimpleAppBar loggedIn={true} logout={this.logout}/>
+            <SimpleAppBar loggedIn={true} logout={this.logout} username={this.state.search.user}/>
             <Router>
               <Switch>
                 <Route path="/" render={()=><DashboardApp search={this.state.search}/>} exact />

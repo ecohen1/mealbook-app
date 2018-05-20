@@ -45,9 +45,10 @@ class ProfileApp extends React.Component {
     firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
       if (snapshot.val()) {
         let userData = snapshot.val();
-        //get meals for user
-        let { preferences, metrics, goals } = userData.personalizationData;
-        self.setState({preferences, metrics, goals, hasProfileData: true})
+        if (userData.personalizationData) {
+          let { preferences, metrics, goals } = userData.personalizationData;
+          self.setState({preferences, metrics, goals, hasProfileData: true})
+        }
       }
     });
   }
@@ -57,7 +58,7 @@ class ProfileApp extends React.Component {
     return (
       <div style={styles.root}>
         <Card style={styles.card}>
-          {!this.state.hasProfileData ? <div/> :
+          {!this.state.hasProfileData ? <p>No data is available for this user</p> :
             <CardContent>
               <div style={styles.accountName}>
                 <Avatar

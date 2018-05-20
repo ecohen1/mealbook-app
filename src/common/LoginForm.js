@@ -1,24 +1,19 @@
 import React from 'react';
 import { FormControl } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
 
 import * as firebase from "firebase";
-
-import PaperSheet from './PaperSheet'
 
 const styles = {
   root: {
     width: "100%",
     overflowX: 'hidden'
   },
-  paperSheet: {
-    marginLeft: '10%',
-    marginRight: '10%',
-    width: '80%'
-  },
   formControl: {
     width: '20%',
-    marginLeft: '40%'
+    marginLeft: '40%',
+    marginTop: '20%'
   }
 };
 
@@ -55,7 +50,6 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <PaperSheet moreStyles={styles.paperSheet}>
           <form action="" onSubmit={this.handleSubmit}>
             <FormControl style={styles.formControl}>
               <TextField
@@ -70,8 +64,11 @@ class LoginForm extends React.Component {
                 }}
               />
             </FormControl>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Button variant="raised" color="primary" onClick={this.handleSubmit}>
+              Log In
+            </Button>
           </form>
-        </PaperSheet>
       </div>
     )
   }
