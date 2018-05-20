@@ -1,20 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-
 
 const styles = {
   root: {
     flexGrow: 1,
-    marginBottom: "0%"
+    marginBottom: "2%"
   },
   logo: {
     width: "16%",
@@ -39,6 +35,10 @@ class SimpleAppBar extends React.Component {
     anchorEl: null
   };
 
+  redirectToProfile = () => {
+    window.location.href = '/profile'
+  }
+
   handleMenu = (e) => {
     this.setState({open: true, anchorEl: e.currentTarget})
   }
@@ -47,12 +47,21 @@ class SimpleAppBar extends React.Component {
     this.setState({open: false, anchorEl: null})
   }
 
+  redirectToLink = () => {
+    window.location.href = '/'
+  }
+
+  handleLogout = () => {
+    this.props.logout()
+    window.location.reload()
+  }
+
   render() {
     return (
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>
           <Toolbar>
-            <img src="mealbook-logo-small.png" style={styles.logo} onClick={() => window.location.href='/'}/>
+            <img src="mealbook-logo-small.png" style={styles.logo} onClick={this.redirectToLink}/>
 
             <Typography variant="title" color="inherit" style={styles.hello}>
               Welcome, Eli!
@@ -81,8 +90,8 @@ class SimpleAppBar extends React.Component {
                 open={this.state.open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
+                <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
               </Menu>
             </div>
           </Toolbar>

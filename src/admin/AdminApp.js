@@ -1,12 +1,6 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-import TextField from 'material-ui/TextField';
 
 import PaperSheet from '../common/PaperSheet'
-import SimpleAppBar from '../common/SimpleAppBar'
 import MealForm from './MealForm'
 import AddButton from './AddButton'
 
@@ -14,76 +8,94 @@ import * as firebase from "firebase";
 
 const styles = {
   paper: {
-    // marginLeft: "2%",
+    marginBottom: "3%",
     // marginRight: "2%",
   }
 }
 
 class App extends React.Component {
   state = {
-    meals: [
-    ],
-    username: this.props.location.search.substring(1)
+    meals: {},
+    // username: this.props.location.search.substring(1)
   };
 
   componentDidMount = () => {
-    this.getUserData(this.state.username)
+    // this.getUserData(this.state.username)
+    this.getRecipeData()
+  }
+
+  generateId = () => {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    // return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    return s4();
   }
 
   addForm = () => {
     var meals = this.state.meals
-    var emptyForm = {
+    var emptyMeal = {
       type: '',
-      name: '',
-      url: '',
+      id: this.generateId(),
+      title: '',
+      recipeUrl: '',
       imgUrl: '',
-      cal: '',
+      calories: '',
+      servings: '',
       prepTime: '',
-      nutritionFactsUrl: ''
+      nutritionFactsUrl: '',
+      ingredients: [],
+      steps: [],
     }
-    // meals.splice(0,0,emptyForm)
-    meals.push(emptyForm)
+    // meals.splice(0,0,emptyMeal)
+    meals[emptyMeal.id] = emptyMeal
     this.setState({meals})
   }
 
-  updateState = (meal, idx) => {
+  updateState = (meal) => {
+    //preprocess meal
+    // let preprocessedMeal = meal
+    // let ingredients = meal.ingredients.split('\n')
+    // let steps = meal.steps.split('\n')
+    // preprocessedMeal.ingredients = ingredients
+    // preprocessedMeal.steps = steps
+
+    //set meal
     var meals = this.state.meals
-    meals[idx] = meal
-    this.setState({meals}, this.updateDB)
+    meals[meal.id] = meal
+    this.setState({meals: {...meals}}, this.updateDB)//should updateDB first, then pull new state
   }
 
   updateDB = () => {
-    firebase.database().ref('users/' + this.state.username).set({
-      meals: this.state.meals,
-      hasPersonalized: true
+    firebase.database().ref('recipes/').set({
+      ...this.state.meals
     });
   }
 
-  getUserData = (userId) => {
+  getRecipeData = () => {
     var self = this
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+    return firebase.database().ref('recipes/').once('value').then(function(snapshot) {
       if (snapshot.val()) {
-        let userData = snapshot.val();
-        //get meals for user
-        var meals = userData.meals;
-        //set new state
-        self.setState({meals})
+        let meals = snapshot.val();
+        self.setState({meals: {...meals}})
       }
     });
   }
 
   render() {
     let self = this
-    var allMeals = []
 
     return (
       <div>
-        <SimpleAppBar />
         {
-          this.state.meals.map((meal, idx) => {
+          Object.keys(this.state.meals).map((mealKey, idx) => {
+            let meal = this.state.meals[mealKey]
             return (
-              <PaperSheet key={'Paper'+idx}>
-                <MealForm meal={meal} idx={idx} updateState={self.updateState} />
+              <PaperSheet key={'Paper'+idx} moreStyles={styles.paper}>
+                {meal.id}
+                <MealForm meal={meal} updateState={self.updateState} />
               </PaperSheet>
             );
           })

@@ -1,18 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import SwipeableViews from 'react-swipeable-views';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
-import List, { ListItem } from 'material-ui/List';
-import Divider from 'material-ui/Divider';
 
 import MealList from './MealList';
 
 const styles = {
   root: {
-    width: "80%",
+    width: "100%",
     margin: "auto",
   },
   tabBar: {
@@ -39,10 +34,10 @@ class FullWidthTabs extends React.Component {
     var mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"]
 
     var mealsByType = {
-      "Breakfast": meals.filter((meal) => meal.type == "Breakfast"),
-      "Lunch": meals.filter((meal) => meal.type == "Lunch"),
-      "Dinner": meals.filter((meal) => meal.type == "Dinner"),
-      "Snack": meals.filter((meal) => meal.type == "Snack"),
+      "Breakfast": meals.filter((meal) => meal.type === "Breakfast"),
+      "Lunch": meals.filter((meal) => meal.type === "Lunch"),
+      "Dinner": meals.filter((meal) => meal.type === "Dinner"),
+      "Snack": meals.filter((meal) => meal.type === "Snack"),
     }
 
     return (

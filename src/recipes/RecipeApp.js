@@ -1,14 +1,9 @@
 import React from 'react';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-
-import SimpleAppBar from '../common/SimpleAppBar'
 import FullWidthTabs from './FullWidthTabs'
-import PersonalizeButton from '../common/PersonalizeButton'
 
 import * as firebase from "firebase";
+
+// import recipes from '../common/recipes';
 
 const styles = {
   root: {
@@ -19,9 +14,10 @@ const styles = {
 class RecipeApp extends React.Component {
   state = {
     meals: [
+
     ],
-    hasPersonalized: true,
-    username: this.props.location.search.substring(1)
+    // username: this.props.location.search.substring(1)
+    username: 'demo'
   };
 
   componentDidMount = () => {
@@ -36,17 +32,24 @@ class RecipeApp extends React.Component {
 
   getUserData = (userId) => {
     var self = this
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+    firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
       if (snapshot.val()) {
         let userData = snapshot.val();
         //get meals for user
         var meals = userData.meals;
-        //see whether user has filled out personalization form
-        var hasPersonalized = userData.hasPersonalized;
         //set new state
-        self.setState({meals, hasPersonalized})
-      } else {
-        self.setState({hasPersonalized: false})
+        firebase.database().ref('recipes/').once('value').then(function(snapshot) {
+          if (snapshot.val()) {
+            let recipeData = snapshot.val();
+            var userRecipes = []
+            for (var recipeKey in recipeData) {
+              if (meals.indexOf(recipeKey) >= 0) {
+                userRecipes.push(recipeData[recipeKey])
+              }
+            }
+            self.setState({meals: userRecipes})
+          }
+        });
       }
     });
   }
@@ -54,8 +57,6 @@ class RecipeApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <SimpleAppBar/>
-        {this.state.hasPersonalized ? '' : <PersonalizeButton />}
         <FullWidthTabs meals={this.state.meals}/>
       </div>
     )

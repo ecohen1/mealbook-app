@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
+import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import TextField from 'material-ui/TextField';
 
@@ -227,6 +224,68 @@ export class NutritionFactsUrlField extends React.Component {
           inputProps={{
             name: 'nutritionFactsUrl',
             id: 'nutritionFactsUrl',
+          }}
+        />
+      </FormControl>
+    );
+  }
+}
+
+export class IngredientsField extends React.Component {
+  state = {
+    val: this.props.val
+  };
+
+  handleChange = event => {
+    this.setState({ val: event.target.value });
+    this.props.updateParent(event.target.value)
+  };
+
+  render() {
+    // const { classes } = this.props;
+
+    return (
+      <FormControl style={styles.formField}>
+        <TextField
+          multiline
+          id="ingredients"
+          label="ingredients"
+          value={this.state.val}
+          onChange={this.handleChange}
+          inputProps={{
+            name: 'ingredients',
+            id: 'ingredients',
+          }}
+        />
+      </FormControl>
+    );
+  }
+}
+
+export class StepsField extends React.Component {
+  state = {
+    val: this.props.val
+  };
+
+  handleChange = event => {
+    this.setState({ val: event.target.value });
+    this.props.updateParent(event.target.value)
+  };
+
+  render() {
+    // const { classes } = this.props;
+
+    return (
+      <FormControl style={styles.formField}>
+        <TextField
+          multiline
+          id="steps"
+          label="steps"
+          value={this.state.val}
+          onChange={this.handleChange}
+          inputProps={{
+            name: 'steps',
+            id: 'steps',
           }}
         />
       </FormControl>

@@ -1,10 +1,8 @@
 import React from 'react';
 
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
 
-import recipes from '../common/recipes'
 import PaperSheet from '../common/PaperSheet'
 
 const styles = {
@@ -52,15 +50,17 @@ class RecipeList extends React.Component {
   state = {
   };
 
-  goToRecipeInfo = (e) => {
-    let imgUrl = e.target.src;
-    let recipeUrl = recipes.filter((r) => r.imgUrl == imgUrl)[0].recipeUrl;
+  goToRecipeInfo = (id) => {
+    // let imgUrl = e.target.src;
+    // let recipeUrl = recipes.filter((r) => r.imgUrl == imgUrl)[0].recipeUrl;
     // window.location.href = recipeUrl;
-    var win = window.open(recipeUrl, '_blank');
-    win.focus();
+    // var win = window.open(recipeUrl, '_blank');
+    // win.focus();
+    window.location.href = '/recipe-info?id=' + id
   }
 
   render() {
+    let { recipes } = this.props
 
     return (
       <div style={styles.root}>
@@ -70,9 +70,9 @@ class RecipeList extends React.Component {
 
         <br></br>
         <PaperSheet moreStyles={styles.paperSheet} noElevation>
-          <GridList style={styles.gridList} cols={1.5} onClick={this.goToRecipeInfo}>
-            {recipes.map((recipe,idx) => (
-              <GridListTile key={"tile" + idx} style={styles.gridListTile}>
+          <GridList style={styles.gridList} cols={1.5}>
+            {recipes.filter(recipe => localStorage.getItem(recipe.id+'_pinned') === "true").map((recipe,idx) => (
+              <GridListTile key={"tile" + idx} style={styles.gridListTile} onClick={() => this.goToRecipeInfo(recipe.id)}>
                 <img src={recipe.imgUrl}/>
                 <GridListTileBar
                   style={styles.titleBar}
