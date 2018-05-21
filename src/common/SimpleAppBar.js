@@ -71,6 +71,7 @@ class SimpleAppBar extends React.Component {
   }
 
   render() {
+    let fullName = this.props.username.split('.')[0].charAt(0).toUpperCase() + this.props.username.split('.')[0].substr(1);
     return (
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>
@@ -84,7 +85,7 @@ class SimpleAppBar extends React.Component {
             <img src="mealbook-logo-small.png" style={styles.logo} onClick={this.redirectToLink}/>
 
             <Typography variant="title" color="inherit" style={styles.hello}>
-              Welcome, {this.props.username}!
+              Welcome, {fullName}!
             </Typography>
 
             <div>
@@ -111,8 +112,8 @@ class SimpleAppBar extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.redirectToDashboard}>Meals</MenuItem>
-                <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
-                <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem>
+                {true ? '' : <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem> }
+                {true ? '' : <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem> }
                 <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
               </Menu>
             </div>
