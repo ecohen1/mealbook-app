@@ -71,7 +71,7 @@ class SimpleAppBar extends React.Component {
   }
 
   render() {
-    let fullName = this.props.username.split('.')[0].charAt(0).toUpperCase() + this.props.username.split('.')[0].substr(1);
+    let fullName = this.props.username.split('-')[0].charAt(0).toUpperCase() + this.props.username.split('-')[0].substr(1);
     return (
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>

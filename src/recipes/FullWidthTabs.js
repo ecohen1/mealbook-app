@@ -31,14 +31,14 @@ class FullWidthTabs extends React.Component {
   render() {
     const { meals } = this.props;
 
-    var mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"]
-
     var mealsByType = {
       "Breakfast": meals.filter((meal) => meal.type === "Breakfast"),
       "Lunch": meals.filter((meal) => meal.type === "Lunch"),
       "Dinner": meals.filter((meal) => meal.type === "Dinner"),
       "Snack": meals.filter((meal) => meal.type === "Snack"),
     }
+
+    var mealTypes = Object.keys(mealsByType).filter((type)=>mealsByType[type].length > 0)
 
     return (
       <div style={styles.root}>
@@ -52,11 +52,9 @@ class FullWidthTabs extends React.Component {
             centered
           >
             {
-              mealTypes.map((mealType, idx) => {
-                return (
-                  <Tab key={"mealTab"+idx} label={mealType} />
-                )
-              })
+              mealTypes.map((mealType, idx) =>
+                <Tab key={"mealTab"+idx} label={mealType} />
+              )
             }
           </Tabs>
         </AppBar>
