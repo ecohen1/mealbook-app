@@ -171,6 +171,36 @@ export class CalField extends React.Component {
   }
 }
 
+export class ServingsField extends React.Component {
+  state = {
+    val: this.props.val
+  };
+
+  handleChange = event => {
+    this.setState({ val: event.target.value });
+    this.props.updateParent(event.target.value)
+  };
+
+  render() {
+    // const { classes } = this.props;
+
+    return (
+      <FormControl style={styles.formField}>
+        <TextField
+          id="servings"
+          label="servings"
+          value={this.state.val}
+          onChange={this.handleChange}
+          inputProps={{
+            name: 'servings',
+            id: 'servings',
+          }}
+        />
+      </FormControl>
+    );
+  }
+}
+
 export class PrepTimeField extends React.Component {
   state = {
     val: this.props.val

@@ -2,8 +2,7 @@ import React from 'react';
 
 import * as firebase from "firebase";
 
-import StatusList from './StatusList'
-import RecipeList from './RecipeList'
+import RecipeApp from '../recipes/RecipeApp'
 
 const styles = {
   root: {
@@ -16,7 +15,7 @@ class DashboardApp extends React.Component {
   state = {
     meals: [
     ],
-    username: 'demo'
+    username: this.props.search.user
   };
 
   componentDidMount = () => {
@@ -30,8 +29,6 @@ class DashboardApp extends React.Component {
         let userData = snapshot.val();
         //get meals for user
         var meals = userData.meals;
-        //see whether user has filled out personalization form
-
         //set new state
         firebase.database().ref('recipes/').once('value').then(function(snapshot) {
           if (snapshot.val()) {
@@ -52,8 +49,7 @@ class DashboardApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <StatusList />
-        <RecipeList recipes={this.state.meals}/>
+        <RecipeApp search={this.props.search} />
       </div>
     )
   }

@@ -5,7 +5,9 @@ import Typography from 'material-ui/Typography';
 
 import IconButton from 'material-ui/IconButton';
 import Menu, { MenuItem } from 'material-ui/Menu';
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = {
   root: {
@@ -23,9 +25,13 @@ const styles = {
     backgroundColor: "white"
   },
   hello: {
-    marginLeft: '50%',
+    marginLeft: '49%',
+    marginRight: '1%',
     width: '30%',
     textAlign: 'right'
+  },
+  accountIcon: {
+    fontSize: '2em'
   }
 };
 
@@ -35,8 +41,16 @@ class SimpleAppBar extends React.Component {
     anchorEl: null
   };
 
+  redirectToDashboard = () => {
+    window.location.href = '/' + window.location.search
+  }
+
   redirectToProfile = () => {
-    window.location.href = '/profile'
+    window.location.href = '/profile' + window.location.search
+  }
+
+  redirectToMetrics = () => {
+    window.location.href = '/tracking' + window.location.search
   }
 
   handleMenu = (e) => {
@@ -48,7 +62,7 @@ class SimpleAppBar extends React.Component {
   }
 
   redirectToLink = () => {
-    window.location.href = '/'
+    window.location.href = '/' + window.location.search
   }
 
   handleLogout = () => {
@@ -57,14 +71,21 @@ class SimpleAppBar extends React.Component {
   }
 
   render() {
+    let fullName = this.props.username.split('-')[0].charAt(0).toUpperCase() + this.props.username.split('-')[0].substr(1);
     return (
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>
           <Toolbar>
+            {true ? '' :
+              <IconButton color="inherit" aria-label="Menu">
+                <MenuIcon />
+              </IconButton>
+            }
+
             <img src="mealbook-logo-small.png" style={styles.logo} onClick={this.redirectToLink}/>
 
             <Typography variant="title" color="inherit" style={styles.hello}>
-              Welcome, Eli!
+              Welcome, {fullName}!
             </Typography>
 
             <div>
@@ -74,7 +95,7 @@ class SimpleAppBar extends React.Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle style={styles.accountIcon} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -90,7 +111,9 @@ class SimpleAppBar extends React.Component {
                 open={this.state.open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
+                <MenuItem onClick={this.redirectToDashboard}>Meals</MenuItem>
+                {true ? '' : <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem> }
+                {true ? '' : <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem> }
                 <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
               </Menu>
             </div>

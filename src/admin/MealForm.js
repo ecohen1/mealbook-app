@@ -5,6 +5,7 @@ import { TypeField,
   UrlField,
   ImgUrlField,
   CalField,
+  ServingsField,
   PrepTimeField,
   NutritionFactsUrlField,
   IngredientsField,
@@ -101,6 +102,7 @@ class MealForm extends React.Component {
         <UrlField val={this.props.meal.recipeUrl} updateParent={(val) => this.updateField('recipeUrl', val)}/>
         <ImgUrlField val={this.props.meal.imgUrl} updateParent={(val) => this.updateField('imgUrl', val)}/>
         <CalField val={this.props.meal.calories} updateParent={(val) => this.updateField('calories', val)}/>
+        <ServingsField val={this.props.meal.servings} updateParent={(val) => this.updateField('servings', val)}/>
         <PrepTimeField val={this.props.meal.prepTime} updateParent={(val) => this.updateField('prepTime', val)}/>
         <NutritionFactsUrlField val={this.props.meal.nutritionFactsUrl} updateParent={(val) => this.updateField('nutritionFactsUrl', val)}/>
         <IngredientsField val={ingredients} updateParent={(val) => this.updateField('ingredients', val)}/>

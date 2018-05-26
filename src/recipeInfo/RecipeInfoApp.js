@@ -3,12 +3,15 @@ import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
+import Divider from 'material-ui/Divider';
 
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import CheckBox from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank';
-import TurnedIn from '@material-ui/icons/TurnedIn';
-import TurnedInNot from '@material-ui/icons/TurnedInNot';
+
+import Timer from '@material-ui/icons/Timer';
+import FlashOn from '@material-ui/icons/FlashOn';
+import BorderOuter from '@material-ui/icons/BorderOuter';
 
 import * as firebase from "firebase";
 
@@ -33,6 +36,9 @@ const styles = {
   },
   button: {
     float: 'right'
+  },
+  overviewStats: {
+    textAlign: 'center'
   }
 };
 
@@ -41,9 +47,9 @@ class RecipeInfoApp extends React.Component {
     recipeInfo: {
 
     },
-    recipeId: unescape(this.props.location.search.substring(4)),
-    pinned: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_pinned') === "true",
-    cooked: localStorage.getItem(unescape(this.props.location.search.substring(4)) + '_cooked') === "true"
+    recipeId: unescape(this.props.search.id),
+    pinned: localStorage.getItem(unescape(this.props.search.id) + '_pinned') === "true",
+    cooked: localStorage.getItem(unescape(this.props.search.id) + '_cooked') === "true"
   };
 
   componentDidMount() {
@@ -85,37 +91,41 @@ class RecipeInfoApp extends React.Component {
           <CardContent>
             <Typography gutterBottom variant="display3">
               {recipe.title}
-              <Button style={styles.button} variant="fab" color="primary" aria-label="add" onClick={this.handleCookedClicked}>
-                {this.state.cooked ? <CheckBox /> : <CheckBoxOutlineBlank /> }
-              </Button>
-              <Button style={styles.button} variant="fab" color="secondary" aria-label="edit" onClick={this.handlePinnedClicked}>
-                {this.state.pinned ? <TurnedIn /> : <TurnedInNot /> }
-              </Button>
+              {true ? '' :
+                <Button style={styles.button} variant="fab" color="primary" aria-label="add" onClick={this.handleCookedClicked}>
+                  {this.state.cooked ? <CheckBox /> : <CheckBoxOutlineBlank /> }
+                </Button>
+              }
             </Typography>
             <Grid container spacing={24} justify={'space-between'}>
               <Grid item xs={8} sm={4}>
-                <Typography gutterBottom variant="headline">
+                <Typography gutterBottom variant="headline" style={styles.overviewStats}>
+                  <FlashOn />
+                  <br />
                   {recipe.calories} calories
                 </Typography>
               </Grid>
               <Grid item xs={8} sm={4}>
-                <Typography gutterBottom variant="headline">
+                <Typography gutterBottom variant="headline" style={styles.overviewStats}>
+                  <Timer />
+                  <br />
                   {recipe.prepTime} min
                 </Typography>
               </Grid>
               <Grid item xs={8} sm={4}>
-                <Typography gutterBottom variant="headline">
+                <Typography gutterBottom variant="headline" style={styles.overviewStats}>
+                  <BorderOuter />
+                  <br />
                   {recipe.servings} servings
                 </Typography>
               </Grid>
             </Grid>
 
             <Typography gutterBottom variant="headline">
-              Recommended for you because: <strong>Seafood, Some Carbs, Dairy-free, Meal Prep</strong>
             </Typography>
 
             <Grid container spacing={24} justify={'space-between'}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={24} sm={12}>
                 <Typography gutterBottom variant="display2">
                   Ingredients
                 </Typography>
@@ -132,11 +142,9 @@ class RecipeInfoApp extends React.Component {
                   </ul>
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <img src={recipe.nutritionFactsUrl} />
-              </Grid>
             </Grid>
-
+            <br /><br />
+            
             <Typography gutterBottom variant="display2">
               Steps
             </Typography>
@@ -144,10 +152,16 @@ class RecipeInfoApp extends React.Component {
             <Typography gutterBottom variant="display1">
               <ol>
                 {recipe.steps.map((step, idx) =>
-                  <li key={'step'+idx}>{step}</li>
+                  <li key={'step'+idx}>
+                    {step}
+                    {idx < recipe.steps.length-1 ? <Divider/> : ''}
+                  </li>
                 )}
               </ol>
             </Typography>
+            <br /><br />
+            <img src={recipe.nutritionFactsUrl} />
+            <br /><br /><br /><br />
           </CardContent>
         </Card>
       </div>

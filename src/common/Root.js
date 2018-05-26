@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import RecipeApp from '../recipes/RecipeApp';
 import AdminApp from '../admin/AdminApp';
 import RecipeInfoApp from '../recipeInfo/RecipeInfoApp';
@@ -18,38 +19,53 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
 class Root extends React.Component {
   state = {
+    search: {}
   };
 
+  componentDidMount() {
+    let search = {}
+    window.location.search.substring(1).split('&')
+              .filter((param) => param !== "")
+              .map((param) => {
+                return param.split("=")
+              })
+              .forEach((paramPair) => {
+                search[paramPair[0]] = paramPair[1]
+              })
+    this.setState({search})
+  }
+
   login = () => {
-    localStorage.setItem('loggedIn', true)
+    localStorage.setItem(this.state.search.user + 'LoggedIn', true)
     window.location.reload()
   }
 
   logout = () => {
-    localStorage.removeItem('loggedIn')
+    localStorage.removeItem(this.state.search.user + 'LoggedIn')
   }
 
   render() {
     return (
       <div>
-        {localStorage.getItem('loggedIn') ?
+        {localStorage.getItem(this.state.search.user + 'LoggedIn') ?
           <div>
-            <SimpleAppBar loggedIn={true} logout={this.logout}/>
+            <SimpleAppBar loggedIn={true} logout={this.logout} username={this.state.search.user}/>
             <Router>
               <Switch>
-                <Route path="/" component={DashboardApp} exact />
-                <Route path="/recipes" component={RecipeApp} exact />
-                <Route path="/admin" component={AdminApp} exact />
-                <Route path="/recipe-info" component={RecipeInfoApp} exact />
-                <Route path="/tracking" component={TrackingApp} exact />
-                <Route path="/profile" component={ProfileApp} exact />
+                <Route path="/" render={()=><DashboardApp search={this.state.search}/>} exact />
+                <Route path="/recipes" render={()=><RecipeApp search={this.state.search}/>} exact />
+                <Route path="/admin" render={()=><AdminApp search={this.state.search}/>} exact />
+                <Route path="/recipe-info" render={()=><RecipeInfoApp search={this.state.search}/>} exact />
+                <Route path="/tracking" render={()=><TrackingApp search={this.state.search}/>} exact />
+                <Route path="/profile" render={()=><ProfileApp search={this.state.search}/>} exact />
               </Switch>
             </Router>
           </div>
           :
-          <LoginForm login={this.login} />
+          <LoginForm login={this.login} user={this.state.search.user}/>
         }
       </div>
     );
