@@ -1,6 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Drawer from '@material-ui/core/Drawer';
+
 import RecipeApp from '../recipes/RecipeApp';
 import AdminApp from '../admin/AdminApp';
 import RecipeInfoApp from '../recipeInfo/RecipeInfoApp';
@@ -53,6 +57,7 @@ class Root extends React.Component {
         {localStorage.getItem(this.state.search.user + 'LoggedIn') ?
           <div>
             <SimpleAppBar loggedIn={true} logout={this.logout} username={this.state.search.user}/>
+
             <Router>
               <Switch>
                 <Route path="/" render={()=><DashboardApp search={this.state.search}/>} exact />

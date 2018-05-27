@@ -1,8 +1,8 @@
 import React from 'react';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-import TextField from 'material-ui/TextField';
+import { MenuItem } from '@material-ui/core/Menu';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
 
 const styles = {
   root: {

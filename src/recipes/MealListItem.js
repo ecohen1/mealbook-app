@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem } from 'material-ui/List';
+import ListItem from '@material-ui/core/ListItem';
 
 const styles = {
   root: {

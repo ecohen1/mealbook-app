@@ -1,6 +1,6 @@
 import React from 'react';
-import Divider from 'material-ui/Divider';
-import Button from 'material-ui/Button';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
 import AddIcon from '@material-ui/icons/Add';
 

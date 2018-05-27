@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import Autorenew from '@material-ui/icons/Autorenew';
 
 import TestGraphs from './TestGraphs'

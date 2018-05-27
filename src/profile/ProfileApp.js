@@ -1,12 +1,12 @@
 import React from 'react';
-import Card, { CardContent } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl } from 'material-ui/Form';
-import Select from 'material-ui/Select';
-import TextField from 'material-ui/TextField';
-import Avatar from 'material-ui/Avatar';
+import Card, { CardContent } from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { MenuItem } from '@material-ui/core/Menu';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+import Avatar from '@material-ui/core/Avatar';
 
 // import Checkbox from '@material-ui/core/Checkbox';
 // import Radio from '@material-ui/core/Radio';
@@ -80,7 +80,6 @@ class ProfileApp extends React.Component {
       <div style={styles.root}>
         <Card style={styles.card}>
           <CardContent>
-
             <div style={styles.quizSection}>
               <Typography gutterBottom variant="display2">
                 About Me

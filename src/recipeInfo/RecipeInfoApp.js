@@ -1,9 +1,9 @@
 import React from 'react';
-import Card, { CardContent, CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
-import Divider from 'material-ui/Divider';
+import Card, { CardContent, CardMedia } from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import CheckBox from '@material-ui/icons/CheckBox';

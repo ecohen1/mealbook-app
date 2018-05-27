@@ -1,7 +1,7 @@
 import React from 'react';
-import { FormControl } from 'material-ui/Form';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 import * as firebase from "firebase";
 
@@ -50,25 +50,23 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-          <form action="" onSubmit={this.handleSubmit}>
-            <FormControl style={styles.formControl}>
-              <TextField
-                id="password"
-                label="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-                inputProps={{
-                  name: 'password',
-                  id: 'password',
-                }}
-              />
-            </FormControl>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button variant="raised" color="primary" onClick={this.handleSubmit}>
-              Log In
-            </Button>
-          </form>
+        <FormControl style={styles.formControl}>
+          <TextField
+            id="password"
+            label="password"
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            inputProps={{
+              name: 'password',
+              id: 'password',
+            }}
+          />
+        </FormControl>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button variant="raised" color="primary" onClick={this.handleSubmit}>
+          Log In
+        </Button>
       </div>
     )
   }
