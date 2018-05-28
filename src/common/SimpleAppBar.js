@@ -10,10 +10,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import {isMobile} from 'react-device-detect';
+
 const styles = {
   root: {
     flexGrow: 1,
-    marginBottom: "2%"
   },
   logo: {
     width: "16%",
@@ -22,8 +23,20 @@ const styles = {
     marginBottom: "0.5%",
     cursor: 'pointer'
   },
+  logoMobile: {
+    width: "40%",
+    // height: "80%",
+    marginTop: "0.5%",
+    marginBottom: "0.5%",
+    marginLeft: "20%",
+    cursor: 'pointer'
+  },
   appBar: {
-    backgroundColor: "white"
+    backgroundColor: "white",
+    zIndex: '9999 !important',
+    position: 'fixed',
+    top: '0',
+    height: '7%',
   },
   hello: {
     marginLeft: '49%',
@@ -77,47 +90,51 @@ class SimpleAppBar extends React.Component {
       <div style={styles.root}>
         <AppBar position="static" color="default" style={styles.appBar}>
           <Toolbar>
-            {true ? '' :
-              <IconButton color="inherit" aria-label="Menu">
+            {isMobile ?
+              <IconButton color="inherit" aria-label="Menu" onClick={this.props.toggleDrawer}>
                 <MenuIcon />
               </IconButton>
+              : ''
             }
 
-            <img src="mealbook-logo-small.png" style={styles.logo} onClick={this.redirectToLink}/>
+            <img src="mealbook-logo-small.png" style={isMobile ? styles.logoMobile : styles.logo} onClick={this.redirectToLink}/>
 
-            <Typography variant="title" color="inherit" style={styles.hello}>
-              Welcome, {fullName}!
-            </Typography>
-
-            <div>
-              <IconButton
-                aria-owns={'menu-appbar'}
-                aria-haspopup="true"
-                onClick={this.handleMenu}
-                color="inherit"
-              >
-                <AccountCircle style={styles.accountIcon} />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={this.state.anchorEl}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={this.state.open}
-                onClose={this.handleClose}
-              >
-                <MenuItem onClick={this.redirectToDashboard}>Meals</MenuItem>
-                <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
-                {true ? '' : <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem> }
-                <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
-              </Menu>
-            </div>
+            {true ? '' :
+              <Typography variant="title" color="inherit" style={styles.hello}>
+                Welcome, {fullName}!
+              </Typography>
+            }
+            {true ? '' :
+              <div>
+                <IconButton
+                  aria-owns={'menu-appbar'}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle style={styles.accountIcon} />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={this.state.anchorEl}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.redirectToDashboard}>Meals</MenuItem>
+                  <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
+                  {true ? '' : <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem> }
+                  <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
+                </Menu>
+              </div>
+            }
           </Toolbar>
 
         </AppBar>

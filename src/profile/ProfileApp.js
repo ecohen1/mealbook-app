@@ -9,6 +9,8 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
 
+import {isMobile} from 'react-device-detect';
+
 // import Checkbox from '@material-ui/core/Checkbox';
 // import Radio from '@material-ui/core/Radio';
 // import RadioGroup from '@material-ui/core/RadioGroup';
@@ -21,6 +23,10 @@ const styles = {
   },
   card: {
     width: '60%',
+    margin: 'auto'
+  },
+  cardMobile: {
+    width: '90%',
     margin: 'auto'
   },
   accountIcon: {
@@ -79,7 +85,7 @@ class ProfileApp extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <Card style={styles.card}>
+        <Card style={isMobile ? styles.cardMobile : styles.card}>
           <CardContent>
             <div style={styles.quizSection}>
               <Typography gutterBottom variant="display2">

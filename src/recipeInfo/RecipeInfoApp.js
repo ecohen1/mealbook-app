@@ -188,7 +188,7 @@ class RecipeInfoApp extends React.Component {
             </Typography>
 
             <Grid container spacing={24} justify={'space-between'}>
-              <Grid item xs={24} sm={12}>
+              <Grid item xs={12} sm={12}>
                 <Typography gutterBottom variant="display2" style={styles.ingredientsTitle}>
                   Ingredients
                 </Typography>

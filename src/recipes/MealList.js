@@ -26,7 +26,7 @@ class MealList extends React.Component {
             return (
               <div key={"mealListItem"+idx}>
                 <MealListItem recipe={recipe} />
-                {idx < recipes.length - 1 ? <Divider /> : ''}
+                <Divider />
               </div>
             )
           })
