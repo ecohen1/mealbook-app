@@ -494,8 +494,12 @@ class ProfileApp extends React.Component {
                 />
               </FormControl>
             </div>
+            <div>
+              All changes are automatically saved
+            </div>
           </CardContent>
         </Card>
+        <br />
       </div>
     );
   }

@@ -50,23 +50,25 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div style={styles.root}>
-        <FormControl style={styles.formControl}>
-          <TextField
-            id="password"
-            label="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            inputProps={{
-              name: 'password',
-              id: 'password',
-            }}
-          />
-        </FormControl>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Button variant="raised" color="primary" onClick={this.handleSubmit}>
+        <form action="" onSubmit={this.handleSubmit}>
+          <FormControl style={styles.formControl}>
+            <TextField
+              id="password"
+              label="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              inputProps={{
+                name: 'password',
+                id: 'password',
+              }}
+            />
+          </FormControl>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Button variant="raised" color="primary" onClick={this.handleSubmit}>
           Log In
-        </Button>
+          </Button>
+        </form>
       </div>
     )
   }

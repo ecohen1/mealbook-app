@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Face from '@material-ui/icons/Face';
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 
 import {isMobile} from 'react-device-detect';
 
@@ -94,6 +95,7 @@ class Root extends React.Component {
 
   logout = () => {
     localStorage.removeItem(this.state.search.user + 'LoggedIn')
+    window.location.reload()
   }
 
   redirectToMeals = () => {
@@ -134,21 +136,33 @@ class Root extends React.Component {
                   <Typography variant="display1" color="inherit" style={styles.hello}>
                     Welcome, {fullName}!
                   </Typography>
+
                   <Divider />
+
                   <ListItem button style={path === '' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToMeals}>
                     <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
                       <ShoppingBasket style={styles.menuIcon}/>&nbsp;&nbsp;
                       Meals
                     </Typography>
                   </ListItem>
+
                   <Divider />
+
                   <ListItem button style={path === 'profile' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToProfile}>
-                  <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
-                    <Face style={styles.menuIcon}/>&nbsp;&nbsp;
-                    Profile
-                  </Typography>
+                    <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
+                      <Face style={styles.menuIcon}/>&nbsp;&nbsp;
+                      Profile
+                    </Typography>
                   </ListItem>
+
                   <Divider />
+
+                  <ListItem button style={styles.listItem} onClick={this.logout}>
+                    <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
+                      <KeyboardBackspace style={styles.menuIcon}/>&nbsp;&nbsp;
+                      Log out
+                    </Typography>
+                  </ListItem>
                 </List>
               </Drawer>
 
