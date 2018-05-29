@@ -1,4 +1,7 @@
 import React from 'react';
+
+import track from 'react-tracking';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -48,6 +51,7 @@ const styles = {
   }
 };
 
+@track((props) => {return { page: 'ProfilePage', username: props.search.user }}, { dispatchOnMount: true })
 class ProfileApp extends React.Component {
   state = {
     username: this.props.search.user,

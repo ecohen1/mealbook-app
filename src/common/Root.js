@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import track from 'react-tracking';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Drawer from '@material-ui/core/Drawer';
@@ -69,6 +71,18 @@ const styles = {
   }
 }
 
+@track({}, { dispatch: (data) => {
+  firebase.database().ref('users/' + data.username).once('value').then(function(snapshot) {
+    if (snapshot.val()) {
+      let userData = snapshot.val();
+      var trackingData = userData.trackingData;
+      trackingData ? trackingData.push(data) : trackingData = [data];
+      firebase.database().ref('users/' + data.username).update({
+        trackingData
+      });
+    }
+  })
+}})
 class Root extends React.Component {
   state = {
     search: {},

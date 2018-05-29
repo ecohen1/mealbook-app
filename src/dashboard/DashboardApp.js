@@ -1,5 +1,7 @@
 import React from 'react';
 
+import track from 'react-tracking';
+
 import * as firebase from "firebase";
 
 import RecipeApp from '../recipes/RecipeApp'
@@ -11,6 +13,7 @@ const styles = {
   }
 };
 
+@track((props) => {return { page: 'DashboardPage', username: props.search.user }}, { dispatchOnMount: true })
 class DashboardApp extends React.Component {
   state = {
     meals: [

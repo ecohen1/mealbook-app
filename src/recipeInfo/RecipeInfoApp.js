@@ -1,4 +1,7 @@
 import React from 'react';
+
+import track from 'react-tracking';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -105,6 +108,7 @@ const styles = isMobile ?
   }
 };
 
+@track((props) => {return { page: 'RecipeInfoPage', username: props.search.user }}, { dispatchOnMount: true })
 class RecipeInfoApp extends React.Component {
   state = {
     recipeInfo: {
