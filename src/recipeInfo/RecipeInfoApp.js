@@ -108,7 +108,7 @@ const styles = isMobile ?
   }
 };
 
-@track((props) => {return { page: 'RecipeInfoPage', username: props.search.user }}, { dispatchOnMount: true })
+@track((props) => {return { page: 'RecipeInfoPage', username: props.search.user, id: unescape(props.search.id) }}, { dispatchOnMount: true })
 class RecipeInfoApp extends React.Component {
   state = {
     recipeInfo: {

@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Face from '@material-ui/icons/Face';
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
+import Add from '@material-ui/icons/Add';
 
 import {isMobile} from 'react-device-detect';
 
@@ -75,10 +76,10 @@ const styles = {
   firebase.database().ref('users/' + data.username).once('value').then(function(snapshot) {
     if (snapshot.val()) {
       let userData = snapshot.val();
-      var trackingData = userData.trackingData;
-      trackingData ? trackingData.push(data) : trackingData = [data];
+      var usageData = userData.usageData;
+      usageData ? usageData.push(data) : usageData = [data];
       firebase.database().ref('users/' + data.username).update({
-        trackingData
+        usageData
       });
     }
   })
@@ -122,6 +123,12 @@ class Root extends React.Component {
     // window.location.href = '/profile' + window.location.search
     var idIndex = window.location.search.indexOf('&id=') >= 0 ? window.location.search.indexOf('&id=') : window.location.search.length
     window.location.href = '/profile' + window.location.search.substring(0, idIndex);
+  }
+
+  redirectToTracking = () => {
+    // window.location.href = '/profile' + window.location.search
+    var idIndex = window.location.search.indexOf('&id=') >= 0 ? window.location.search.indexOf('&id=') : window.location.search.length
+    window.location.href = '/tracking' + window.location.search.substring(0, idIndex);
   }
 
   toggleDrawer = () => {
@@ -170,6 +177,15 @@ class Root extends React.Component {
                     <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
                       <Face style={styles.menuIcon}/>&nbsp;&nbsp;
                       Profile
+                    </Typography>
+                  </ListItem>
+
+                  <Divider />
+
+                  <ListItem button style={path === 'tracking' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToTracking}>
+                    <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
+                      <Add style={styles.menuIcon}/>&nbsp;&nbsp;
+                      Metrics
                     </Typography>
                   </ListItem>
 
