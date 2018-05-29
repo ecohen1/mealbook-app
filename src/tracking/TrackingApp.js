@@ -1,9 +1,9 @@
 import React from 'react';
 
+import {isMobile} from 'react-device-detect';
+
 import Autorenew from '@material-ui/icons/Autorenew';
 import Add from '@material-ui/icons/Add';
-
-import TestGraphs from './TestGraphs'
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -35,6 +35,15 @@ const styles = {
     marginLeft: '25%'
   },
   logValue: {
+
+  },
+  logTimeMobile: {
+    marginLeft: '5%'
+  },
+  logDateMobile: {
+    marginLeft: '5%'
+  },
+  logValueMobile: {
 
   }
 };
@@ -85,6 +94,8 @@ class TrackingApp extends React.Component {
   }
 
   render() {
+    var reversedLoggingData = this.state.loggingData
+    reversedLoggingData.reverse()
     return (
       <div style={styles.root}>
         <Card style={styles.card}>
@@ -97,24 +108,24 @@ class TrackingApp extends React.Component {
 
             <List style={styles.root}>
               {
-                this.state.loggingData.map((log, idx) => {
+                reversedLoggingData.map((log, idx) => {
                   return (
                     <div key={"logData"+idx}>
                       <ListItem style={styles.root} button>
-                        <div style={styles.logValue}>
-                          <Typography gutterBottom variant="display2">
+                        <div style={isMobile ? styles.logValueMobile : styles.logValue}>
+                          <Typography gutterBottom variant={isMobile ? 'title' : "display2" }>
                             Value: {log.value}
                           </Typography>
                         </div>
 
-                        <div style={styles.logTime}>
-                          <Typography gutterBottom variant="display2">
+                        <div style={isMobile ? styles.logTimeMobile : styles.logTime}>
+                          <Typography gutterBottom variant={isMobile ? 'title' : "display2" }>
                             Time: {log.time}
                           </Typography>
                         </div>
 
-                        <div style={styles.logDate}>
-                          <Typography gutterBottom variant="display2">
+                        <div style={isMobile ? styles.logDateMobile : styles.logDate}>
+                          <Typography gutterBottom variant={isMobile ? 'title' : "display2" }>
                             Date: {log.date}
                           </Typography>
                         </div>
