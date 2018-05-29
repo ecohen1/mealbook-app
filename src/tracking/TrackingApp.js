@@ -29,7 +29,10 @@ const styles = {
     margin: 'auto'
   },
   logTime: {
-    marginLeft: '50%'
+    marginLeft: '25%'
+  },
+  logDate: {
+    marginLeft: '25%'
   },
   logValue: {
 
@@ -63,15 +66,18 @@ class TrackingApp extends React.Component {
     var bloodSugarValue = prompt("Blood sugar value:", "");
     if (bloodSugarValue == null || bloodSugarValue == "") {
         alert('Need to enter a valid blood sugar value.')
+        return 0;
     }
 
     var bloodSugarTime = prompt("Time of reading:", "");
     if (bloodSugarTime == null || bloodSugarTime == "") {
         alert('Need to enter a valid time.')
+        return 0;
     }
 
     var loggingData = this.state.loggingData
-    loggingData.push({value: bloodSugarValue, time: bloodSugarTime})
+    var date = (new Date().getMonth()+1) + '/' + new Date().getDate() + '/' + (new Date().getYear()-100)
+    loggingData.push({value: bloodSugarValue, time: bloodSugarTime, date: date})
     firebase.database().ref('users/'+this.state.username).update({
       loggingData
     }).then(() => window.location.reload());
@@ -92,9 +98,8 @@ class TrackingApp extends React.Component {
             <List style={styles.root}>
               {
                 this.state.loggingData.map((log, idx) => {
-                  console.log(log);
                   return (
-                    <div id={"logData"+idx}>
+                    <div key={"logData"+idx}>
                       <ListItem style={styles.root} button>
                         <div style={styles.logValue}>
                           <Typography gutterBottom variant="display2">
@@ -105,6 +110,12 @@ class TrackingApp extends React.Component {
                         <div style={styles.logTime}>
                           <Typography gutterBottom variant="display2">
                             Time: {log.time}
+                          </Typography>
+                        </div>
+
+                        <div style={styles.logDate}>
+                          <Typography gutterBottom variant="display2">
+                            Date: {log.date}
                           </Typography>
                         </div>
                       </ListItem>
