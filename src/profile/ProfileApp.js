@@ -87,6 +87,10 @@ class ProfileApp extends React.Component {
       <div style={styles.root}>
         <Card style={isMobile ? styles.cardMobile : styles.card}>
           <CardContent>
+            <div>
+              All changes are automatically saved
+            </div>
+            <br />
             <div style={styles.quizSection}>
               <Typography gutterBottom variant="display2">
                 About Me
