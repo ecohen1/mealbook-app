@@ -56,33 +56,30 @@ class SimpleAppBar extends React.Component {
   };
 
   redirectToDashboard = () => {
-    window.location.href = '/' + window.location.search
+    var idIndex = window.location.search.indexOf('&id=') >= 0 ? window.location.search.indexOf('&id=') : window.location.search.length
+    window.location.href = '/' + window.location.search.substring(0, idIndex);
   }
 
-  redirectToProfile = () => {
-    window.location.href = '/profile' + window.location.search
-  }
-
-  redirectToMetrics = () => {
-    window.location.href = '/tracking' + window.location.search
-  }
-
-  handleMenu = (e) => {
-    this.setState({open: true, anchorEl: e.currentTarget})
-  }
-
-  handleClose = () => {
-    this.setState({open: false, anchorEl: null})
-  }
-
-  redirectToLink = () => {
-    window.location.href = '/' + window.location.search
-  }
-
-  handleLogout = () => {
-    this.props.logout()
-    window.location.reload()
-  }
+  // redirectToProfile = () => {
+  //   window.location.href = '/profile' + window.location.search
+  // }
+  //
+  // redirectToMetrics = () => {
+  //   window.location.href = '/tracking' + window.location.search
+  // }
+  //
+  // handleMenu = (e) => {
+  //   this.setState({open: true, anchorEl: e.currentTarget})
+  // }
+  //
+  // handleClose = () => {
+  //   this.setState({open: false, anchorEl: null})
+  // }
+  //
+  // handleLogout = () => {
+  //   this.props.logout()
+  //   window.location.reload()
+  // }
 
   render() {
     let fullName = this.props.username.split('-')[0].charAt(0).toUpperCase() + this.props.username.split('-')[0].substr(1);
@@ -97,7 +94,7 @@ class SimpleAppBar extends React.Component {
               : ''
             }
 
-            <img src="mealbook-logo-small.png" style={isMobile ? styles.logoMobile : styles.logo} onClick={this.redirectToLink}/>
+            <img src="mealbook-logo-small.png" style={isMobile ? styles.logoMobile : styles.logo} onClick={this.redirectToDashboard}/>
 
             {true ? '' :
               <Typography variant="title" color="inherit" style={styles.hello}>

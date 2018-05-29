@@ -113,11 +113,15 @@ class Root extends React.Component {
   }
 
   redirectToMeals = () => {
-    window.location.href = '/' + window.location.search
+    // window.location.href = '/' + window.location.search
+    var idIndex = window.location.search.indexOf('&id=') >= 0 ? window.location.search.indexOf('&id=') : window.location.search.length
+    window.location.href = '/' + window.location.search.substring(0, idIndex);
   }
 
   redirectToProfile = () => {
-    window.location.href = '/profile' + window.location.search
+    // window.location.href = '/profile' + window.location.search
+    var idIndex = window.location.search.indexOf('&id=') >= 0 ? window.location.search.indexOf('&id=') : window.location.search.length
+    window.location.href = '/profile' + window.location.search.substring(0, idIndex);
   }
 
   toggleDrawer = () => {
