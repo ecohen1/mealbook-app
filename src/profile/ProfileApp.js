@@ -286,6 +286,21 @@ class ProfileApp extends React.Component {
                 Diabetes History
               </Typography>
               <Typography gutterBottom variant="headline">
+                <strong>Are you diabetic?</strong>
+              </Typography>
+              <FormControl style={styles.formField}>
+                <Select
+                  label=""
+                  value={this.state.formFields.isDiabetic ? this.state.formFields.isDiabetic : ''}
+                  onChange={(event) => this.handleChange('isDiabetic', event.target.value)}
+                >
+                  <MenuItem value={"Yes, Type 1"}>Yes, Type 1</MenuItem>
+                  <MenuItem value={"Yes, Type 2"}>Yes, Type 2</MenuItem>
+                  <MenuItem value={"No, I'm prediabetic"}>No, I&#39;m prediabetic</MenuItem>
+                  <MenuItem value={"I'm not diabetic or prediabetic"}>I&#39;m not diabetic or prediabetic</MenuItem>
+                </Select>
+              </FormControl>
+              <br /><Typography gutterBottom variant="headline">
                 <strong>How often do you inject insulin?</strong>
               </Typography>
               <FormControl style={styles.formField}>

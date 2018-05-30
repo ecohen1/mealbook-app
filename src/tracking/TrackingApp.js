@@ -1,5 +1,7 @@
 import React from 'react';
 
+import track from 'react-tracking';
+
 import {isMobile} from 'react-device-detect';
 
 import Autorenew from '@material-ui/icons/Autorenew';
@@ -48,6 +50,7 @@ const styles = {
   }
 };
 
+@track((props) => {return { page: 'TrackingPage', username: props.search.user }}, { dispatchOnMount: true })
 class TrackingApp extends React.Component {
   state = {
     loggingData: [

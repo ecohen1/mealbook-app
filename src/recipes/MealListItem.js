@@ -88,7 +88,7 @@ class MealListItem extends React.Component {
         <div>
           <div style={styles.recipeTitle}>{recipe.title}</div>
           <div style={styles.recipeInfo}>
-            {recipe.calories} cal &nbsp;&nbsp;&nbsp; {recipe.prepTime} minutes
+            {recipe.calories} cal &nbsp;&nbsp;&nbsp; {isMobile ? <br /> : ''} {recipe.prepTime} minutes
           </div>
         </div>
 

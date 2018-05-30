@@ -72,6 +72,8 @@ const styles = {
   }
 }
 
+var realTesters = ["lydia","katie-senter","jesse","glenn-dorsey","euge-scheck"]
+
 @track({}, { dispatch: (data) => {
   firebase.database().ref('users/' + data.username).once('value').then(function(snapshot) {
     if (snapshot.val()) {
@@ -173,21 +175,25 @@ class Root extends React.Component {
 
                   <Divider />
 
+                  {realTesters.indexOf(this.state.search.user) >= 0 ?
                   <ListItem button style={path === 'profile' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToProfile}>
                     <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
                       <Face style={styles.menuIcon}/>&nbsp;&nbsp;
                       Profile
                     </Typography>
                   </ListItem>
+                  : '' }
 
                   <Divider />
 
+                  {realTesters.indexOf(this.state.search.user) >= 0 ?
                   <ListItem button style={path === 'tracking' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToTracking}>
                     <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
                       <Add style={styles.menuIcon}/>&nbsp;&nbsp;
                       Metrics
                     </Typography>
                   </ListItem>
+                  : '' }
 
                   <Divider />
 
