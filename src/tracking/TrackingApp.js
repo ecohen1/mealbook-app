@@ -4,7 +4,7 @@ import track from 'react-tracking';
 
 import {isMobile} from 'react-device-detect';
 
-import Autorenew from '@material-ui/icons/Autorenew';
+// import Autorenew from '@material-ui/icons/Autorenew';
 import Add from '@material-ui/icons/Add';
 
 import Button from '@material-ui/core/Button';
@@ -76,13 +76,13 @@ class TrackingApp extends React.Component {
 
   logBloodSugar = () => {
     var bloodSugarValue = prompt("Blood sugar value:", "");
-    if (bloodSugarValue == null || bloodSugarValue == "") {
+    if (bloodSugarValue == null || bloodSugarValue === "") {
         alert('Need to enter a valid blood sugar value.')
         return 0;
     }
 
     var bloodSugarTime = prompt("Time of reading:", "");
-    if (bloodSugarTime == null || bloodSugarTime == "") {
+    if (bloodSugarTime == null || bloodSugarTime === "") {
         alert('Need to enter a valid time.')
         return 0;
     }
