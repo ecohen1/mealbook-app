@@ -32,8 +32,8 @@ const styles = {
     marginLeft: '30%',
   },
   passwordFieldMobile: {
-    width: '60%',
-    marginLeft: '10%',
+    width: '40%',
+    marginLeft: '20%',
   },
   loginMsg: {
     width: '90%',
