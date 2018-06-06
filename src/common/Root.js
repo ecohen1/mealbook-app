@@ -75,6 +75,9 @@ const styles = {
 var realTesters = ["lydia","katie-senter","jesse","glenn-dorsey","euge-scheck","glenn"]
 
 @track({}, { dispatch: (data) => {
+  var date = new Date();
+  var dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+  data.timestamp = dateStr
   firebase.database().ref('users/' + data.username).once('value').then(function(snapshot) {
     if (snapshot.val()) {
       let userData = snapshot.val();
