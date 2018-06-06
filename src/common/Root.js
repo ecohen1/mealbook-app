@@ -72,7 +72,7 @@ const styles = {
   }
 }
 
-var realTesters = ["lydia","katie-senter","jesse","glenn-dorsey","euge-scheck"]
+var realTesters = ["lydia","katie-senter","jesse","glenn-dorsey","euge-scheck","glenn"]
 
 @track({}, { dispatch: (data) => {
   firebase.database().ref('users/' + data.username).once('value').then(function(snapshot) {
