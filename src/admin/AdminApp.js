@@ -1,5 +1,7 @@
 import React from 'react';
 
+import track from 'react-tracking';
+
 import PaperSheet from '../common/PaperSheet'
 import MealForm from './MealForm'
 import AddButton from './AddButton'
@@ -13,6 +15,7 @@ const styles = {
   }
 }
 
+@track({ page: 'AdminPage' }, { dispatchOnMount: true })
 class App extends React.Component {
   state = {
     meals: {},

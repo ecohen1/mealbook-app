@@ -1,5 +1,7 @@
 import React from 'react';
-import { ListItem } from 'material-ui/List';
+import ListItem from '@material-ui/core/ListItem';
+
+import {isMobile} from 'react-device-detect';
 
 const styles = {
   root: {
@@ -10,6 +12,11 @@ const styles = {
   recipeImage: {
     height: "15%",
     width: "15%",
+    marginRight: "5%",
+  },
+  recipeImageMobile: {
+    height: "35%",
+    width: "35%",
     marginRight: "5%",
   },
   recipeTitle: {
@@ -76,7 +83,7 @@ class MealListItem extends React.Component {
 
     return (
       <ListItem style={styles.root} button onClick={() => this.redirectToRecipe(recipe.id)}>
-        <img src={recipe.imgUrl} style={styles.recipeImage}/>
+        <img src={recipe.imgUrl} style={isMobile ? styles.recipeImageMobile : styles.recipeImage}/>
 
         <div>
           <div style={styles.recipeTitle}>{recipe.title}</div>

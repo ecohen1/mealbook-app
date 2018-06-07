@@ -27,8 +27,21 @@ class MealForm extends React.Component {
     if (fieldName === "ingredients") {
       let ingredientList = val.split('\n')
       var ingredientDictList = []
-      for (var ingredientKey in Object.keys(ingredientList)) {
-        ingredientDictList.push({amount: '', item: ingredientList[ingredientKey]})
+      if (ingredientList[ingredientList.length-1].length === 0) {
+        var ingredientSet = {}
+        for (var ingredientKey in Object.keys(ingredientList)) {
+          if (parseInt(ingredientKey) % 2 === 0) {
+            ingredientSet['item'] = ingredientList[ingredientKey]
+          } else {
+            ingredientSet['amount'] = ingredientList[ingredientKey]
+            ingredientDictList.push(ingredientSet)
+            ingredientSet = {}
+          }
+        }
+      } else {
+        for (var ingredientKey in Object.keys(ingredientList)) {
+          ingredientDictList.push({amount: '', item: ingredientList[ingredientKey]})
+        }
       }
       stateChange.ingredients = ingredientDictList
     } else if (fieldName === "steps") {
