@@ -5,12 +5,10 @@ import track from 'react-tracking';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import Avatar from '@material-ui/core/Avatar';
 
 import {isMobile} from 'react-device-detect';
 
@@ -286,6 +284,21 @@ class ProfileApp extends React.Component {
                 Diabetes History
               </Typography>
               <Typography gutterBottom variant="headline">
+                <strong>Are you diabetic?</strong>
+              </Typography>
+              <FormControl style={styles.formField}>
+                <Select
+                  label=""
+                  value={this.state.formFields.isDiabetic ? this.state.formFields.isDiabetic : ''}
+                  onChange={(event) => this.handleChange('isDiabetic', event.target.value)}
+                >
+                  <MenuItem value={"Yes, Type 1"}>Yes, Type 1</MenuItem>
+                  <MenuItem value={"Yes, Type 2"}>Yes, Type 2</MenuItem>
+                  <MenuItem value={"No, I'm prediabetic"}>No, I&#39;m prediabetic</MenuItem>
+                  <MenuItem value={"I'm not diabetic or prediabetic"}>I&#39;m not diabetic or prediabetic</MenuItem>
+                </Select>
+              </FormControl>
+              <br /><Typography gutterBottom variant="headline">
                 <strong>How often do you inject insulin?</strong>
               </Typography>
               <FormControl style={styles.formField}>
