@@ -125,8 +125,8 @@ class SimpleAppBar extends React.Component {
                   open={this.state.open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.redirectToDashboard}>Meals</MenuItem>
                   <MenuItem onClick={this.redirectToProfile}>Profile</MenuItem>
+                  <MenuItem onClick={this.redirectToDashboard}>Meals</MenuItem>
                   {true ? '' : <MenuItem onClick={this.redirectToMetrics}>Tracking</MenuItem> }
                   <MenuItem onClick={this.handleLogout}>Log out</MenuItem>
                 </Menu>
