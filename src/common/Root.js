@@ -72,7 +72,7 @@ const styles = {
   }
 }
 
-var realTesters = ["lydia","katie-senter","jesse","glenn-dorsey","euge-scheck","glenn"]
+var realTesters = ["lydia","katie-senter","jesse","glenn-dorsey","euge-scheck","glenn","joel-cohen"]
 
 @track({}, { dispatch: (data) => {
   var date = new Date();
@@ -169,15 +169,6 @@ class Root extends React.Component {
 
                   <Divider />
 
-                  <ListItem button style={path === '' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToMeals}>
-                    <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
-                      <ShoppingBasket style={styles.menuIcon}/>&nbsp;&nbsp;
-                      Meals
-                    </Typography>
-                  </ListItem>
-
-                  <Divider />
-
                   {realTesters.indexOf(this.state.search.user) >= 0 ?
                   <ListItem button style={path === 'profile' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToProfile}>
                     <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
@@ -186,6 +177,15 @@ class Root extends React.Component {
                     </Typography>
                   </ListItem>
                   : '' }
+
+                  <Divider />
+
+                  <ListItem button style={path === '' ? styles.selectedListItem : styles.listItem} onClick={this.redirectToMeals}>
+                    <Typography variant="display1" color="inherit" style={styles.listItemTitle}>
+                      <ShoppingBasket style={styles.menuIcon}/>&nbsp;&nbsp;
+                      Meals
+                    </Typography>
+                  </ListItem>
 
                   <Divider />
 
